@@ -38,12 +38,14 @@ export const getTypeDefs = () => {
   });
 
   const search = compose.getResolver("search").getFieldConfig();
+  const findById = compose.getResolver("findById").getFieldConfig();
 
   global.typeDefs = new GraphQLSchema({
     query: new GraphQLObjectType({
       name: "Query",
       fields: {
-        search
+        search,
+        findById
       }
     })
   });
