@@ -1,0 +1,18 @@
+{
+  "name": "NextJS Starter GraphQL",
+  "short_name": "nextjs-starter-graphql",
+  "theme_color": "#8bd7f8",
+  "background_color": "#004740",
+  "display": "fullscreen",
+  "orientation": "portrait",
+  "scope": "/",
+  "start_url": "/",
+  "icons": [
+    {
+      "src": "icons/180.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    }
+  ],
+  "splash_pages": null
+}

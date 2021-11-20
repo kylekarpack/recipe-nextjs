@@ -1,0 +1,49 @@
+{
+  "name": "nextjs-starter-graphql",
+  "version": "1.0.0",
+  "repository": "https://github.com/kylekarpack/nextjs-starter-graphql.git",
+  "author": "Kyle Karpack <kylekarpack@gmail.com>",
+  "license": "MIT",
+  "private": false,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "test": "jest",
+    "lint": "npm run:lint",
+    "lint:check": "next lint",
+    "lint:fix": "next lint --fix",
+    "prettier": "npm run prettier:check",
+    "prettier:check": "prettier --check --ignore-path .gitignore .",
+    "prettier:fix": "prettier --write --ignore-path .gitignore ."
+  },
+  "dependencies": {
+    "@apollo/client": "^3.3.20",
+    "apollo-server-micro": "^2.25.1",
+    "cross-fetch": "^3.1.4",
+    "faker": "^5.5.3",
+    "graphql": "^15.5.1",
+    "next": "^12.0.2",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
+  },
+  "devDependencies": {
+    "@apollo/react-testing": "^4.0.0",
+    "@testing-library/dom": "^8.5.0",
+    "@testing-library/jest-dom": "^5.14.1",
+    "@testing-library/react": "^12.1.0",
+    "@testing-library/user-event": "^13.2.1",
+    "@types/faker": "^5.5.9",
+    "@types/jest": "^27.0.1",
+    "@types/node": "^15.12.4",
+    "@types/react": "^17.0.34",
+    "babel-jest": "^27.2.0",
+    "eslint": "^7.29.0",
+    "eslint-config-next": "^11.0.0",
+    "eslint-config-prettier": "^8.3.0",
+    "identity-obj-proxy": "^3.0.0",
+    "jest": "^27.2.0",
+    "prettier": "^2.4.1",
+    "typescript": "^4.3.4"
+  }
+}
