@@ -1,9 +1,12 @@
 import { QueryResult } from "@apollo/client";
-import { Alert, AlertDescription, AlertIcon, Grid, GridItem, Spinner } from "@chakra-ui/react";
+import { Alert, AlertDescription, AlertIcon, SimpleGrid, Spinner } from "@chakra-ui/react";
 import React, { FunctionComponent } from "react";
 import { RecipeResults } from "utilities/types";
+import RecipeCard from "./RecipeCard";
 
-const RecipeList: FunctionComponent<Partial<QueryResult<RecipeResults>>> = ({ loading, error, data }) => {
+const RecipeList: FunctionComponent<QueryResult<RecipeResults>> = (props) => {
+  const { loading, error, data } = props;
+
   if (loading) {
     return (
       <div>
@@ -24,11 +27,11 @@ const RecipeList: FunctionComponent<Partial<QueryResult<RecipeResults>>> = ({ lo
   const recipes = data?.search?.hits;
 
   return (
-    <Grid templateColumns="repeat(5, 1fr)" gap={6}>
+    <SimpleGrid minChildWidth="250px" gap={6}>
       {recipes.map((recipe) => (
-        <GridItem key={recipe._id}>{recipe._source.title}</GridItem>
+        <RecipeCard key={recipe._source.id} {...recipe._source} />
       ))}
-    </Grid>
+    </SimpleGrid>
   );
 };
 

@@ -2,7 +2,7 @@ import { ApolloProvider } from "@apollo/client";
 import { AppProps } from "next/app";
 import Head from "next/head";
 import { useApollo } from "../utilities/apolloClient";
-import { ChakraProvider } from "@chakra-ui/react";
+import { ChakraProvider, Container } from "@chakra-ui/react";
 
 function App({ Component, pageProps }: AppProps) {
   const apolloClient = useApollo(pageProps.initialApolloState);
@@ -23,7 +23,9 @@ function App({ Component, pageProps }: AppProps) {
       </Head>
       <ApolloProvider client={apolloClient}>
         <ChakraProvider>
-          <Component {...pageProps} />
+          <Container maxW="container.xl">
+            <Component {...pageProps} />
+          </Container>
         </ChakraProvider>
       </ApolloProvider>
     </>

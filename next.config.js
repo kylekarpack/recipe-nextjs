@@ -1,5 +1,5 @@
 module.exports = {
   images: {
-    domains: ["untappd.akamaized.net"]
+    domains: ["d3cizcpymoenau.cloudfront.net"]
   }
 };

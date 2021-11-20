@@ -8,14 +8,14 @@ import { RecipeResults } from "utilities/types";
 const seed = new Date().getTime();
 
 const HomePage: FunctionComponent = () => {
-  const { error, data, loading }: QueryResult<RecipeResults> = useQuery(GET_RANDOM_RECIPES, {
+  const query: QueryResult<RecipeResults> = useQuery(GET_RANDOM_RECIPES, {
     variables: { seed: seed, limit: 12 }
   });
 
   return (
     <div className="section content">
       <Heading as="h1">Recipes</Heading>
-      <RecipeList error={error} loading={loading} data={data} />
+      <RecipeList {...query} />
     </div>
   );
 };
