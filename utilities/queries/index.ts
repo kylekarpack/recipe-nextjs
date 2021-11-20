@@ -1,1 +1,1 @@
-export * from "./getWidgets";
+export * from "./getRecipes";

@@ -15,6 +15,17 @@ export type Scalars = {
   JSON: any;
 };
 
+export type RecipeSearchOutput = {
+  __typename?: "recipeSearchOutput"
+  hits?: Maybe<Array<Maybe<RecipeSearchHitItem>>>
+  count?: Maybe<Scalars["Int"]>
+  aggregations?: Maybe<Scalars["JSON"]>
+  max_score?: Maybe<Scalars["Float"]>
+  took?: Maybe<Scalars["Int"]>
+  timed_out?: Maybe<Scalars["Boolean"]>
+  _shards?: Maybe<RecipeMetaShards>
+}
+
 export type RecipeSearchHitItem = {
   __typename?: "recipeSearchHitItem";
   _index?: Maybe<Scalars["String"]>;

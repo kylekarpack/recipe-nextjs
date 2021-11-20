@@ -1,15 +1,16 @@
 import { ApolloServer } from "apollo-server-micro";
-import typeDefs from "utilities/graphql/schemas";
+import { getTypeDefs } from "utilities/graphql/schemas";
 
 const apolloServer = new ApolloServer({
-  schema: typeDefs,
+  schema: getTypeDefs(),
   introspection: true,
   playground: true
 });
 
 export const config = {
   api: {
-    bodyParser: false
+    bodyParser: false,
+    externalResolver: true
   }
 };
 
