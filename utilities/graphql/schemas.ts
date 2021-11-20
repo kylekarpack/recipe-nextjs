@@ -11,7 +11,7 @@ const search = composeWithElastic({
 	elasticMapping: recipeMapping,
 	elasticClient: new elasticsearch.Client({
 		host: process.env.ELASTICSEARCH_HOST,
-		version: process.env.ELASTICSEARCH_VERSION,
+		apiVersion: process.env.ELASTICSEARCH_VERSION,
     ssl: {
       rejectUnauthorized: false,
       pfx: []
