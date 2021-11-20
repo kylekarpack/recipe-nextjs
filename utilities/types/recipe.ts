@@ -15,6 +15,11 @@ export type Scalars = {
   JSON: any;
 };
 
+export type RecipeResults = {
+  __typename?: "Query"
+  search?: Maybe<RecipeSearchOutput>
+}
+
 export type RecipeSearchOutput = {
   __typename?: "recipeSearchOutput"
   hits?: Maybe<Array<Maybe<RecipeSearchHitItem>>>
