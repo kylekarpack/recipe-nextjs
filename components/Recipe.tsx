@@ -37,8 +37,8 @@ export const Instructions: FunctionComponent<Recipe> = (recipe) => {
   if (recipe.instructions) {
     return (
       <Box>
-        <Heading as="h2">Instructions</Heading>
-        <OrderedList py="4">
+        <Heading as="h2" pb="4">Instructions</Heading>
+        <OrderedList>
           {recipe.instructions.map((el, i) => {
             return (
               <ListItem key={i} pb="2">
@@ -61,15 +61,19 @@ export const Ingredients: FunctionComponent<Recipe> = (recipe) => {
   if (recipe.recipeIngredientGroups) {
     return (
       <>
-        <Heading as="h2">Ingredients</Heading>
+        <Heading as="h2" pb="4">Ingredients</Heading>
         {recipe.recipeIngredientGroups.map((group) => (
           <Box key={group.id}>
-            <Box>{group.name}</Box>
-            <UnorderedList py="4">
+            {group.name && (
+              <Box>
+                <strong>{group.name}</strong>
+              </Box>
+            )}
+            <UnorderedList py="2">
               {group.recipeIngredients.map((el) => (
                 <ListItem key={el.id} pb="2" lineHeight="1.2">
-									{el.quantity} <span>{el.measurement}</span> {el.ingredient.name}
-								</ListItem>
+                  {el.quantity} <span>{el.measurement}</span> {el.ingredient.name}
+                </ListItem>
               ))}
             </UnorderedList>
           </Box>
