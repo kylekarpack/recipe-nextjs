@@ -20,6 +20,8 @@ function App({ Component, pageProps }: AppProps) {
         <link rel="manifest" href="/manifest.json" />
         <link href="/icons/180.png" rel="icon" type="image/png" sizes="180x180" />
         <link rel="apple-touch-icon" href="/icons/180.png"></link>
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
         <meta name="theme-color" content="#8bd7f8" />
       </Head>
       <ApolloProvider client={apolloClient}>

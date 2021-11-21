@@ -12,7 +12,7 @@ export const HeroImage: FunctionComponent<Recipe> = (recipe) => {
         </Heading>
         <Box position="absolute" left={0} right={0} top={0} bottom={0} background="black">
           <Box opacity={0.4}>
-            <Img layout="fill" objectFit="cover" src={`https:${recipe.photo.heroImageUrl}`} alt={recipe.photo.alt} />
+            <Img priority layout="fill" objectFit="cover" src={`https:${recipe.photo.heroImageUrl}`} alt={recipe.photo.alt} />
           </Box>
         </Box>
       </Box>
@@ -62,17 +62,17 @@ export const Ingredients: FunctionComponent<Recipe> = (recipe) => {
     return (
       <>
         <Heading as="h2" pb="4">Ingredients</Heading>
-        {recipe.recipeIngredientGroups.map((group) => (
-          <Box key={group.id}>
+        {recipe.recipeIngredientGroups.map((group, i) => (
+          <Box key={i}>
             {group.name && (
               <Box>
                 <strong>{group.name}</strong>
               </Box>
             )}
             <UnorderedList py="2">
-              {group.recipeIngredients.map((el) => (
-                <ListItem key={el.id} pb="2" lineHeight="1.2">
-                  {el.quantity} <span>{el.measurement}</span> {el.ingredient.name}
+              {group.recipeIngredients.map((ingredient, i) => (
+                <ListItem key={i} pb="2" lineHeight="1.2">
+                  {ingredient.quantity} <span>{ingredient.measurement}</span> {ingredient.ingredient.name}
                 </ListItem>
               ))}
             </UnorderedList>
