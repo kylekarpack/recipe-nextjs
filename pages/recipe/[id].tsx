@@ -1,7 +1,7 @@
 import { QueryResult, useQuery } from "@apollo/client";
-import { Spinner, Container, Grid, GridItem } from "@chakra-ui/react";
+import { Container, Grid, GridItem, Spinner } from "@chakra-ui/react";
 import ErrorMessage from "components/ErrorMessage";
-import { HeroImage, Ingredients, Instructions, Overview } from "components/Recipe";
+import { HeroImage, Ingredients, Instructions, Overview } from "components/recipe";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import React from "react";
@@ -43,7 +43,6 @@ const RecipePage = () => {
 					</GridItem>
 				</Grid>
       </Container>
-			
     </>
   );
 };
