@@ -1,8 +1,11 @@
 const stepNumberRegex = /^(\<p\>)?\s?(\<strong\>)?\s?[0-9]+\.\s?(\<\/strong\>)?/;
 
-export const removeStepNumber = (step: string): string => {
-  if (step) {
-    return step.replace(stepNumberRegex, "").trim();
+/**
+ * Remove numeric values that might precede a step's contents
+ */
+export const removeStepNumber = (stepText: string): string => {
+  if (!stepText) {
+    return "";
   }
-  return step;
+  return stepText.replace(stepNumberRegex, "").trim();
 };

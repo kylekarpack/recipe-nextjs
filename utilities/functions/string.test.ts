@@ -3,7 +3,7 @@ import { removeStepNumber } from "./string";
 describe("string tests", () => {
   describe("step number tests", () => {
     it("works empty", () => {
-      expect(removeStepNumber(null)).toBe(null);
+      expect(removeStepNumber(null)).toBe("");
       expect(removeStepNumber("")).toBe("");
     });
 
@@ -24,7 +24,7 @@ describe("string tests", () => {
 			expect(removeStepNumber("<p> 1. step")).toBe("step");
 			expect(removeStepNumber("<p><strong>1.</strong> step")).toBe("step");
 			expect(removeStepNumber("<p><strong> 1.</strong> step")).toBe("step");
-			expect(removeStepNumber("<p><strong> 999.</strong> step")).toBe("step");
+			expect(removeStepNumber("<p>999. step")).toBe("step");
 		});
   });
 });
