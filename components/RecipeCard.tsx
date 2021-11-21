@@ -10,13 +10,15 @@ const RecipeCard: FunctionComponent<Recipe> = (recipe) => {
     <Link href={`/recipe/${recipe.id}`} passHref>
       <a>
         <Box borderWidth="1px" borderRadius="lg" overflow="hidden">
-          <Img
-            layout="responsive"
-            height={100}
-            width="100%"
-            src={makeNonProtocolRelative(recipe.photo?.imageUrl)}
-            alt={recipe.photo?.alt}
-          />
+          {recipe.photo && (
+            <Img
+              layout="responsive"
+              height={100}
+              width="100%"
+              src={makeNonProtocolRelative(recipe.photo?.imageUrl)}
+              alt={recipe.photo?.alt}
+            />
+          )}
 
           <Box p="6">
             <Box mt="1" fontWeight="semibold" as="h4" lineHeight="tight" isTruncated>

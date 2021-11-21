@@ -1,68 +1,80 @@
+import { ApolloError } from "@apollo/client";
 import { MockedProvider, MockedResponse } from "@apollo/client/testing";
 import { act, render } from "@testing-library/react";
-import { GraphQLError } from "graphql";
 import React from "react";
 import { GET_RANDOM_RECIPES } from "utilities/queries";
-import { Recipe } from "utilities/types";
+import { RecipeResults, RecipeSearchHitItem } from "utilities/types";
 import RecipeList from "./RecipeList";
 
-const getMock = (limit: number = 0): MockedResponse<Record<string, Recipe[]>> => {
+const getRecipes = (limit: number): RecipeSearchHitItem[] => {
+  return new Array(limit).fill({}).map((_, i) => {
+    return {
+      _source: {
+        title: `Recipe ${i}`,
+        id: String(i)
+      }
+    };
+  });
+};
+
+const getMock = (limit: number = 0): MockedResponse<RecipeResults> => {
   return {
     request: {
       query: GET_RANDOM_RECIPES
     },
     result: {
       data: {
-        hits: []
+        search: {
+          hits: getRecipes(limit)
+        }
       }
     }
   };
 };
 
-describe("widget display component", () => {
-  it.skip("renders empty", () => {
+describe("recipe list component", () => {
+  it("renders empty", () => {
     const mocks = [getMock()];
 
     const cmp = render(
       <MockedProvider mocks={mocks} addTypename={false}>
-        <RecipeList {...mocks[0] as any} />
+        <RecipeList {...mocks[0].result} />
       </MockedProvider>
     );
 
     expect(cmp.container).toBeVisible();
   });
 
-  it.skip("renders widgets", async () => {
+  it("renders number of recipes", async () => {
     const limit = 5;
     const mocks = [getMock(limit)];
 
     const cmp = render(
       <MockedProvider mocks={mocks} addTypename={false}>
-        <RecipeList {...mocks[0] as any} />
+        <RecipeList {...mocks[0].result} />
       </MockedProvider>
     );
 
     await act(() => new Promise((resolve) => setTimeout(resolve, 0)));
-
-    expect(cmp.container.querySelectorAll("tbody tr").length).toBe(limit);
-  })
+    expect(cmp.getByTestId("grid").childElementCount).toBe(limit);
+  });
 
   it("renders error", async () => {
-    const errorText = "Bad";
+    const errorMessage = "Bad";
     const mocks = [
       {
         ...getMock(),
-        error: new GraphQLError(errorText)
+        error: new ApolloError({ errorMessage })
       }
     ];
 
     const cmp = render(
       <MockedProvider mocks={mocks} addTypename={false}>
-        <RecipeList {...mocks[0] as any} />
+        <RecipeList error={mocks[0].error} />
       </MockedProvider>
     );
 
     await act(() => new Promise((resolve) => setTimeout(resolve, 0)));
-    expect(cmp.getByTestId("error")).toHaveTextContent(errorText);
+    expect(cmp.getByTestId("error")).toHaveTextContent(errorMessage);
   });
 });

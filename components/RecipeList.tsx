@@ -5,7 +5,7 @@ import { RecipeResults } from "utilities/types";
 import ErrorMessage from "./ErrorMessage";
 import RecipeCard from "./RecipeCard";
 
-const RecipeList: FunctionComponent<QueryResult<RecipeResults>> = (props) => {
+const RecipeList: FunctionComponent<Partial<QueryResult<RecipeResults>>> = (props) => {
   const { loading, error, data } = props;
 
   if (loading) {
@@ -23,7 +23,7 @@ const RecipeList: FunctionComponent<QueryResult<RecipeResults>> = (props) => {
   const recipes = data?.search?.hits;
 
   return (
-    <SimpleGrid minChildWidth="250px" gap={6}>
+    <SimpleGrid minChildWidth="250px" gap={6} data-testid="grid">
       {recipes.map((recipe) => (
         <RecipeCard key={recipe._source.id} {...recipe._source} />
       ))}
