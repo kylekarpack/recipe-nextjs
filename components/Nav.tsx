@@ -45,8 +45,8 @@ const Nav: FunctionComponent = () => {
   const { colorMode, toggleColorMode } = useColorMode();
 
   return (
-    <Box bg={useColorModeValue("gray.100", "gray.900")} px={4} position="sticky" top="0" zIndex="99" boxShadow="sm">
-      <Flex h={16} alignItems={"center"} justifyContent={"space-between"}>
+    <Box bg={useColorModeValue("gray.100", "gray.900")} px={4} position="sticky" top="0" zIndex="999" boxShadow="sm">
+      <Flex h={14} alignItems={"center"} justifyContent={"space-between"}>
         <IconButton
           size={"md"}
           icon={isOpen ? <CloseIcon /> : <HamburgerIcon />}
@@ -55,13 +55,15 @@ const Nav: FunctionComponent = () => {
           onClick={isOpen ? onClose : onOpen}
         />
         <HStack spacing={8} alignItems={"center"}>
-          <Flex alignItems={"center"}>
-            {colorMode === "dark" ? (
-              <Img src="/logo-white.svg" height={40} width={200} priority alt="Recipe tools logo" />
-            ) : (
-              <Img src="/logo.svg" height={40} width={200} priority alt="Recipe tools logo" />
-            )}
-          </Flex>
+          <Link href="/">
+            <Flex alignItems={"center"}>
+              {colorMode === "dark" ? (
+                <Img src="/logo-white.svg" height={40} width={200} priority alt="Recipe tools logo" />
+              ) : (
+                <Img src="/logo.svg" height={40} width={200} priority alt="Recipe tools logo" />
+              )}
+            </Flex>
+          </Link>
           <HStack as={"nav"} spacing={4} display={{ base: "none", md: "flex" }}>
             {menuLinks.map((link) => (
               <NavLink href={link.href} key={link.href}>
