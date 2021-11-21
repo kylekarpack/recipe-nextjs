@@ -1,5 +1,6 @@
 import { Box, Heading, ListItem, OrderedList } from "@chakra-ui/react";
 import React, { FunctionComponent } from "react";
+import { removeStepNumber } from "utilities/functions";
 import { Recipe } from "utilities/types";
 
 export const Instructions: FunctionComponent<Recipe> = (recipe) => {
@@ -15,7 +16,7 @@ export const Instructions: FunctionComponent<Recipe> = (recipe) => {
               <ListItem key={i} pb="2">
                 <div
                   dangerouslySetInnerHTML={{
-                    __html: el.content.replace(/^(\<p\>)?(\<strong\>)?[0-9]+\. (\<\/strong\>)?/, "")
+                    __html: removeStepNumber(el.content)
                   }}
                 ></div>
               </ListItem>

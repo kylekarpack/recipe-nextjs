@@ -2,17 +2,8 @@ import { Box } from "@chakra-ui/react";
 import Img from "next/image";
 import Link from "next/link";
 import React, { FunctionComponent } from "react";
+import { makeNonProtocolRelative } from "utilities/functions";
 import { Recipe } from "utilities/types";
-
-const makeNonProtocolRelative = (url: string): string => {
-  if (!url) {
-    return "";
-  }
-  if (url.startsWith("//")) {
-    return `https:${url}`;
-  }
-  return url;
-};
 
 const RecipeCard: FunctionComponent<Recipe> = (recipe) => {
   return (
