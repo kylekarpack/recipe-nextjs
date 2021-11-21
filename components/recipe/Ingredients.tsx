@@ -19,7 +19,8 @@ export const Ingredients: FunctionComponent<Recipe> = (recipe) => {
             <UnorderedList py="2">
               {group.recipeIngredients.map((ingredient, i) => (
                 <ListItem key={i} pb="2" lineHeight="1.2">
-                  {ingredient.quantity} <span>{ingredient.measurement}</span> {ingredient.ingredient.name}
+                  {ingredient.quantity} <span>{ingredient.measurement}</span>{" "}
+                  {ingredient.quantity === "1" ? ingredient.ingredient.name : ingredient.ingredient.pluralName}
                 </ListItem>
               ))}
             </UnorderedList>

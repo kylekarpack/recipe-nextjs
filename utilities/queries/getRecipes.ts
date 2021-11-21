@@ -58,6 +58,7 @@ export const GET_RECIPE = gql`
             recipeIngredients {
               ingredient {
                 name
+                pluralName
               }
               measurement
               quantity
