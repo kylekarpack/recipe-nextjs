@@ -18,6 +18,7 @@ export type Scalars = {
 export type RecipeResults = {
   __typename?: "Query"
   search?: Maybe<RecipeSearchOutput>
+  findById?: Maybe<Recipe>
 }
 
 export type RecipeSearchOutput = {

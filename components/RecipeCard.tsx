@@ -1,7 +1,7 @@
+import { Box } from "@chakra-ui/react";
+import Img from "next/image";
 import React, { FunctionComponent } from "react";
 import { Recipe } from "utilities/types";
-import { Box, Image, Badge } from "@chakra-ui/react";
-import Img from "next/image";
 
 const makeNonProtocolRelative = (url: string): string => {
   if (!url) {
