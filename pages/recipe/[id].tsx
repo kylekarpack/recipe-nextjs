@@ -1,7 +1,7 @@
 import { QueryResult, useQuery } from "@apollo/client";
-import { Spinner, Container } from "@chakra-ui/react";
+import { Spinner, Container, Grid, GridItem } from "@chakra-ui/react";
 import ErrorMessage from "components/ErrorMessage";
-import { HeroImage, Instructions, Overview } from "components/Recipe";
+import { HeroImage, Ingredients, Instructions, Overview } from "components/Recipe";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import React from "react";
@@ -31,10 +31,19 @@ const RecipePage = () => {
         <title>{recipe.title}</title>
       </Head>
       <HeroImage {...recipe} />
-      <Container maxW="container.xl" paddingX="8vw" paddingY="5vh">
+      <Container maxW="container.xl" py="12" px="12">
         <Overview {...recipe} />
-        <Instructions {...recipe} />
+				<Grid templateColumns="repeat(4, 1fr)" py="6" gap={12}>
+					
+					<GridItem colSpan={3}>
+						<Instructions {...recipe} />
+					</GridItem>
+					<GridItem colSpan={1}>
+						<Ingredients {...recipe} />
+					</GridItem>
+				</Grid>
       </Container>
+			
     </>
   );
 };

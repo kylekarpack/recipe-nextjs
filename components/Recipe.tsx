@@ -1,14 +1,13 @@
-import { Box, Heading, ListItem, OrderedList } from "@chakra-ui/react";
+import { Box, Heading, ListItem, OrderedList, UnorderedList } from "@chakra-ui/react";
 import Img from "next/image";
-import Head from "next/head";
-import { FunctionComponent } from "react";
+import React, { FunctionComponent } from "react";
 import { Recipe } from "utilities/types";
 
 export const HeroImage: FunctionComponent<Recipe> = (recipe) => {
   if (recipe?.photo) {
     return (
-      <Box position="relative" height="30vh">
-        <Heading as="h1" zIndex={99} position="relative" top="30%" color="white" padding="0 5vw" >
+      <Box position="relative" height="40vh">
+        <Heading as="h1" zIndex={99} position="relative" top="35%" color="white" padding="0 5vw">
           {recipe.title}
         </Heading>
         <Box position="absolute" left={0} right={0} top={0} bottom={0} background="black">
@@ -37,12 +36,12 @@ export const Overview: FunctionComponent<Recipe> = (recipe) => {
 export const Instructions: FunctionComponent<Recipe> = (recipe) => {
   if (recipe.instructions) {
     return (
-      <Box py="4">
+      <Box>
         <Heading as="h2">Instructions</Heading>
         <OrderedList py="4">
           {recipe.instructions.map((el, i) => {
             return (
-              <ListItem key={i}>
+              <ListItem key={i} pb="2">
                 <div
                   dangerouslySetInnerHTML={{
                     __html: el.content.replace(/^(\<p\>)?(\<strong\>)?[0-9]+\. (\<\/strong\>)?/, "")
@@ -53,6 +52,29 @@ export const Instructions: FunctionComponent<Recipe> = (recipe) => {
           })}
         </OrderedList>
       </Box>
+    );
+  }
+  return null;
+};
+
+export const Ingredients: FunctionComponent<Recipe> = (recipe) => {
+  if (recipe.recipeIngredientGroups) {
+    return (
+      <>
+        <Heading as="h2">Ingredients</Heading>
+        {recipe.recipeIngredientGroups.map((group) => (
+          <Box key={group.id}>
+            <Box>{group.name}</Box>
+            <UnorderedList py="4">
+              {group.recipeIngredients.map((el) => (
+                <ListItem key={el.id} pb="2" lineHeight="1.2">
+									{el.quantity} <span>{el.measurement}</span> {el.ingredient.name}
+								</ListItem>
+              ))}
+            </UnorderedList>
+          </Box>
+        ))}
+      </>
     );
   }
   return null;
