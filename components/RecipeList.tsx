@@ -13,7 +13,11 @@ const RecipeList: FunctionComponent<QueryResult<RecipeResults>> = (props) => {
   }
 
   if (error) {
-    return <ErrorMessage>{error.message}</ErrorMessage>;
+    return (
+      <div data-testid="error">
+        <ErrorMessage>{error.message}</ErrorMessage>
+      </div>
+    );
   }
 
   const recipes = data?.search?.hits;

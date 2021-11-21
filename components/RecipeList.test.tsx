@@ -19,8 +19,8 @@ const getMock = (limit: number = 0): MockedResponse<Record<string, Recipe[]>> =>
   };
 };
 
-describe.skip("widget display component", () => {
-  it("renders empty", () => {
+describe("widget display component", () => {
+  it.skip("renders empty", () => {
     const mocks = [getMock()];
 
     const cmp = render(
@@ -32,7 +32,7 @@ describe.skip("widget display component", () => {
     expect(cmp.container).toBeVisible();
   });
 
-  it("renders widgets", async () => {
+  it.skip("renders widgets", async () => {
     const limit = 5;
     const mocks = [getMock(limit)];
 
