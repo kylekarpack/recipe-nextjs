@@ -1,4 +1,4 @@
-import { QueryResult, useQuery } from "@apollo/client";
+import { useQuery } from "@apollo/client";
 import { Container, Grid, GridItem, Spinner } from "@chakra-ui/react";
 import ErrorMessage from "components/ErrorMessage";
 import { HeroImage, Ingredients, Instructions, Overview } from "components/recipe";
@@ -11,7 +11,7 @@ import { RecipeResults } from "utilities/types";
 const RecipePage = () => {
   const router = useRouter();
 
-  const { data, error, loading }: QueryResult<RecipeResults> = useQuery(GET_RECIPE, {
+  const { data, error, loading } = useQuery<RecipeResults>(GET_RECIPE, {
     variables: { id: String(router.query.id) }
   });
 
@@ -33,15 +33,14 @@ const RecipePage = () => {
       <HeroImage {...recipe} />
       <Container maxW="container.xl" py="12" px="12">
         <Overview {...recipe} />
-				<Grid templateColumns="repeat(4, 1fr)" py="6" gap={12}>
-					
-					<GridItem colSpan={3}>
-						<Instructions {...recipe} />
-					</GridItem>
-					<GridItem colSpan={1}>
-						<Ingredients {...recipe} />
-					</GridItem>
-				</Grid>
+        <Grid templateColumns="repeat(4, 1fr)" py="6" gap={12}>
+          <GridItem colSpan={3}>
+            <Instructions {...recipe} />
+          </GridItem>
+          <GridItem colSpan={1}>
+            <Ingredients {...recipe} />
+          </GridItem>
+        </Grid>
       </Container>
     </>
   );

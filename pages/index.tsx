@@ -1,4 +1,4 @@
-import { QueryResult, useQuery } from "@apollo/client";
+import { useQuery } from "@apollo/client";
 import { Container, Heading } from "@chakra-ui/react";
 import RecipeList from "components/RecipeList";
 import Head from "next/head";
@@ -9,7 +9,7 @@ import { RecipeResults } from "utilities/types";
 const seed = new Date().getTime();
 
 const HomePage: FunctionComponent = () => {
-  const query: QueryResult<RecipeResults> = useQuery(GET_RANDOM_RECIPES, {
+  const query = useQuery<RecipeResults>(GET_RANDOM_RECIPES, {
     variables: { seed: seed, limit: 12 }
   });
 
@@ -18,7 +18,9 @@ const HomePage: FunctionComponent = () => {
       <Head>
         <title>Recipes</title>
       </Head>
-      <Heading as="h1" py="4">Recipes</Heading>
+      <Heading as="h1" py="4">
+        Recipes
+      </Heading>
       <RecipeList {...query} />
     </Container>
   );
