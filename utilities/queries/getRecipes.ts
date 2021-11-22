@@ -83,3 +83,20 @@ export const GET_RECIPE = gql`
     }
   }
 `;
+
+export const SEARCH_RECIPES = gql`
+  query Recipes($query: String, $limit: Int = 5) {
+    search(limit: $limit, query: { match: { title: { query: $query } } }) {
+      hits {
+        _source {
+          id
+          title
+          description
+          photo {
+            imageUrl
+          }
+        }
+      }
+    }
+  }
+`;
