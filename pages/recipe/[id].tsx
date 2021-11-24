@@ -1,5 +1,5 @@
 import { useQuery } from "@apollo/client";
-import { Container, Grid, GridItem, Spinner } from "@chakra-ui/react";
+import { Center, Container, Grid, GridItem, Spinner } from "@chakra-ui/react";
 import ErrorMessage from "components/ErrorMessage";
 import { HeroImage, Ingredients, Instructions, Overview } from "components/recipe";
 import Head from "next/head";
@@ -16,7 +16,13 @@ const RecipePage = () => {
   });
 
   if (loading) {
-    return <Spinner />;
+    if (loading) {
+      return (
+        <Center h="60vh">
+          <Spinner />
+        </Center>
+      );
+    }
   }
 
   if (error) {

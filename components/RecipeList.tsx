@@ -1,5 +1,5 @@
 import { QueryResult } from "@apollo/client";
-import { SimpleGrid, Spinner } from "@chakra-ui/react";
+import { Center, SimpleGrid, Spinner } from "@chakra-ui/react";
 import React, { FunctionComponent } from "react";
 import { RecipeResults } from "utilities/types";
 import ErrorMessage from "./ErrorMessage";
@@ -9,7 +9,11 @@ const RecipeList: FunctionComponent<Partial<QueryResult<RecipeResults>>> = (prop
   const { loading, error, data } = props;
 
   if (loading) {
-    return <Spinner />;
+    return (
+      <Center h="60vh">
+        <Spinner />
+      </Center>
+    );
   }
 
   if (error) {
