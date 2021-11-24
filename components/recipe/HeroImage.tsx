@@ -1,4 +1,4 @@
-import { Box, Button, Heading, Stack, Text } from "@chakra-ui/react";
+import { Box, Button, Heading, Stack, Text, DarkMode } from "@chakra-ui/react";
 import Img from "next/image";
 import React, { FunctionComponent } from "react";
 import { makeNonProtocolRelative } from "utilities/functions";
@@ -19,20 +19,14 @@ export const HeroImage: FunctionComponent<Recipe> = (recipe) => {
             dangerouslySetInnerHTML={{ __html: recipe.description }}
           />
           <Stack direction={{ base: "column", sm: "row" }} spacing={4} pt="4">
-            <Button
-              px="8"
-              rounded={"full"}
-              bg={"blue.400"}
-              color={"white"}
-              _hover={{
-                bg: "blue.500"
-              }}
-            >
+            <Button px="8" rounded="full" colorScheme="blue">
               Add to Meal Plan
             </Button>
-            <Button px="8" rounded={"full"}>
-              Start Cooking
-            </Button>
+            <DarkMode>
+              <Button px="8" borderColor="grey.50" variant="outline" rounded="full">
+                Start Cooking
+              </Button>
+            </DarkMode>
           </Stack>
         </Box>
 
