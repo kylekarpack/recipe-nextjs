@@ -86,7 +86,7 @@ export const GET_RECIPE = gql`
 
 export const SEARCH_RECIPES = gql`
   query Recipes($query: String, $limit: Int = 5) {
-    search(limit: $limit, query: { match: { title: { query: $query } } }) {
+    search(limit: $limit, q: $query) {
       hits {
         _source {
           id

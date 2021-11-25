@@ -1,75 +1,73 @@
-import { useLazyQuery, useQuery } from "@apollo/client";
+import { useLazyQuery } from "@apollo/client";
 import { SearchIcon } from "@chakra-ui/icons";
-import { Box, Input, InputGroup, InputLeftElement, Menu, MenuItem, MenuList } from "@chakra-ui/react";
-import { FunctionComponent, useEffect, useRef, useState } from "react";
+import {
+  Box,
+  CircularProgress,
+  Input,
+  InputGroup,
+  InputLeftElement,
+  InputRightElement,
+  ListItem,
+  UnorderedList
+} from "@chakra-ui/react";
+import { resetIdCounter, useCombobox } from "downshift";
+import { FunctionComponent } from "react";
+import Router from "next/router";
 import { SEARCH_RECIPES } from "utilities/queries";
-import { Recipe, RecipeResults, RecipeSearchHitItem } from "utilities/types";
-import Downshift, { useCombobox, resetIdCounter } from "downshift";
+import { RecipeResults, RecipeSearchHitItem } from "utilities/types";
 
-const itemToString = (item: RecipeSearchHitItem) => (item?._source?.title ?? "");
+const itemToString = (item: RecipeSearchHitItem) => item?._source?.title ?? "";
 
 const Search: FunctionComponent = () => {
-  const [query, setQuery] = useState("");
-  const [findItems, { error, loading, data }] = useLazyQuery<RecipeResults>(SEARCH_RECIPES, {
-    variables: {
-      query,
-      limit: 3
-    }
-  });
+  const [findItems, { error, loading, data }] = useLazyQuery<RecipeResults>(SEARCH_RECIPES);
 
-	const items = data?.search?.hits ?? [];
-	resetIdCounter()
+  const items = data?.search?.hits ?? [];
+	console.log(items, loading)
+  resetIdCounter();
 
-  const {
-    isOpen,
-    getToggleButtonProps,
-    getLabelProps,
-    getMenuProps,
-    highlightedIndex,
-    getItemProps,
-    getInputProps,
-    getComboboxProps
-  } = useCombobox({
+  const { isOpen, getMenuProps, highlightedIndex, getItemProps, getInputProps, getComboboxProps } = useCombobox({
     items,
     itemToString,
-		onSelectedItemChange: ({ selectedItem }) => {
-			alert(selectedItem);
-		},
+    onSelectedItemChange: ({ selectedItem }) => {
+      Router.push(`/recipe/${selectedItem._source.id}`)
+    },
     onInputValueChange: ({ inputValue }) => {
-			findItems({
-				variables: {
-					query: inputValue
-				}
-			})
+      findItems({
+        variables: {
+          query: inputValue,
+          limit: 3
+        }
+      });
     }
   });
 
-  if (error) {
-    return <>`Error! ${error.message}`</>;
-  }
-
   return (
-    <div>
-      <div {...getComboboxProps()}>
-        <input {...getInputProps()} />
-      </div>
-      <ul {...getMenuProps()}>
-        {isOpen && loading ? (
-          <li>...Loading</li>
-        ) : (
-          isOpen &&
+    <Box position="relative">
+      <InputGroup {...getComboboxProps()}>
+        <InputLeftElement pointerEvents="none">
+          <SearchIcon color="gray.300" />
+        </InputLeftElement>
+        <InputRightElement pointerEvents="none">
+          <CircularProgress size="16px" thickness="12px" hidden={!loading} isIndeterminate />
+        </InputRightElement>
+        <Input {...getInputProps()} />
+      </InputGroup>
+      <UnorderedList {...getMenuProps()} position="absolute" background="grey" left="0" right="0" paddingStart="0" listStyleType="none">
+        {isOpen &&
           items.map((item, index) => (
-            <li
+            <ListItem
+              paddingX="4"
+              paddingY="2"
+              cursor="pointer"
               style={highlightedIndex === index ? { backgroundColor: "#bde4ff" } : {}}
               key={`${item}${index}`}
               {...getItemProps({ item, index })}
             >
               {itemToString(item)}
-            </li>
-          ))
-        )}
-      </ul>
-    </div>
+            </ListItem>
+          ))}
+      </UnorderedList>
+    </Box>
   );
 };
 
