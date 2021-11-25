@@ -19,6 +19,7 @@ import {
 } from "@chakra-ui/react";
 import Img from "next/image";
 import { FunctionComponent, ReactNode } from "react";
+import Search from "./Search";
 
 const NavLink: FunctionComponent<{ children: ReactNode; href?: string }> = ({ children, href }) => (
   <Link
@@ -73,6 +74,7 @@ const Nav: FunctionComponent = () => {
           </HStack>
         </HStack>
         <Flex alignItems={"center"}>
+					<Search />
           <Button onClick={toggleColorMode}>{colorMode === "light" ? <MoonIcon /> : <SunIcon />}</Button>
         </Flex>
       </Flex>
