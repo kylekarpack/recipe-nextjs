@@ -1,3 +1,5 @@
+/* istanbul ignore file */
+
 import elasticsearch from "elasticsearch";
 import { GraphQLObjectType, GraphQLSchema } from "graphql";
 import { composeWithElastic } from "graphql-compose-elasticsearch";

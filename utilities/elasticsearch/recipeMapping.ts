@@ -4,6 +4,7 @@
 //   and then get subtree of returned document which contains
 //   properties definitions (which looks like following data):
 
+/* istanbul ignore next */
 const recipeMapping = {
 	properties: {
 		articleId: {
