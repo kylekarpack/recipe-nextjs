@@ -1,7 +1,7 @@
 {
-  "name": "nextjs-starter-graphql",
+  "name": "recipe-nextjs",
   "version": "1.0.0",
-  "repository": "https://github.com/kylekarpack/nextjs-starter-graphql.git",
+  "repository": "https://github.com/kylekarpack/recipe-nextjs",
   "author": "Kyle Karpack <kylekarpack@gmail.com>",
   "license": "MIT",
   "private": false,
@@ -29,6 +29,7 @@
     "elasticsearch": "^16.7.2",
     "framer-motion": "^4.1.17",
     "graphql": "^15.5.1",
+    "graphql-compose": "^9.0.4",
     "graphql-compose-elasticsearch": "^5.0.1",
     "lodash": "^4.17.21",
     "next": "^12.0.2",
