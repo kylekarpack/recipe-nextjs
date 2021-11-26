@@ -1,8 +1,8 @@
 import { useQuery } from "@apollo/client";
 import { Container, Heading } from "@chakra-ui/react";
-import RecipeList from "components/RecipeList";
 import Head from "next/head";
 import { FunctionComponent } from "react";
+import RecipeList from "components/RecipeList";
 import { GET_RANDOM_RECIPES } from "utilities/queries";
 import { RecipeResults } from "utilities/types";
 

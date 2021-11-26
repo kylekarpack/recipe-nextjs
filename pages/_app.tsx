@@ -1,8 +1,8 @@
 import { ApolloProvider } from "@apollo/client";
 import { ChakraProvider } from "@chakra-ui/react";
-import Nav from "components/Nav";
 import { AppProps } from "next/app";
 import Head from "next/head";
+import Nav from "components/Nav";
 import { useApollo } from "utilities/apolloClient";
 
 function App({ Component, pageProps }: AppProps) {
