@@ -1,3 +1,5 @@
+/* eslint-disable no-use-before-define */
+/* eslint-disable camelcase */
 export type Maybe<T> = T | null;
 export type Exact<T extends { [key: string]: unknown }> = {
   [K in keyof T]: T[K];
