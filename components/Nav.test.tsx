@@ -4,12 +4,12 @@ import Nav from "./Nav";
 
 describe("navigation component", () => {
   it("renders smoke test", () => {
-    const cmp = render(<Nav />);
-    expect(cmp.container).toBeVisible();
+    const { container } = render(<Nav />);
+    expect(container).toBeVisible();
   });
 
   it("renders menu items", () => {
-		const cmp = render(<Nav />);
-		expect(cmp.getByTestId("mainnav").children.length).toBe(3);
-	});
+    const { getByTestId } = render(<Nav />);
+    expect(getByTestId("mainnav").children.length).toBe(3);
+  });
 });

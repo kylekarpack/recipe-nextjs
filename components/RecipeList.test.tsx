@@ -36,27 +36,27 @@ describe("recipe list component", () => {
   it("renders empty", () => {
     const mocks = [getMock()];
 
-    const cmp = render(
+    const { container } = render(
       <MockedProvider mocks={mocks} addTypename={false}>
         <RecipeList {...mocks[0].result} />
       </MockedProvider>
     );
 
-    expect(cmp.container).toBeVisible();
+    expect(container).toBeVisible();
   });
 
   it("renders number of recipes", async () => {
     const limit = 5;
     const mocks = [getMock(limit)];
 
-    const cmp = render(
+    const { getByTestId } = render(
       <MockedProvider mocks={mocks} addTypename={false}>
         <RecipeList {...mocks[0].result} />
       </MockedProvider>
     );
 
     await act(() => new Promise((resolve) => setTimeout(resolve, 0)));
-    expect(cmp.getByTestId("grid").childElementCount).toBe(limit);
+    expect(getByTestId("grid").childElementCount).toBe(limit);
   });
 
   it("renders error", async () => {
@@ -68,13 +68,13 @@ describe("recipe list component", () => {
       }
     ];
 
-    const cmp = render(
+    const { getByTestId } = render(
       <MockedProvider mocks={mocks} addTypename={false}>
         <RecipeList error={mocks[0].error} />
       </MockedProvider>
     );
 
     await act(() => new Promise((resolve) => setTimeout(resolve, 0)));
-    expect(cmp.getByTestId("error")).toHaveTextContent(errorMessage);
+    expect(getByTestId("error")).toHaveTextContent(errorMessage);
   });
 });

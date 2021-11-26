@@ -4,8 +4,8 @@ import { Overview } from "./Overview";
 
 describe("recipe overview component", () => {
   it("renders empty", () => {
-    const cmp = render(<Overview />);
-    expect(cmp.container).toBeVisible();
+    const { container } = render(<Overview />);
+    expect(container).toBeVisible();
   });
 
   it("renders an overview", () => {
