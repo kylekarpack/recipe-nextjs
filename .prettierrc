@@ -1,4 +1,5 @@
 {
+  "$schema": "https://json.schemastore.org/prettierrc.json",
   "semi": true,
   "trailingComma": "none",
   "singleQuote": false,
@@ -6,5 +7,5 @@
   "useTabs": false,
   "tabWidth": 2,
   "endOfLine": "auto",
-  "jsxBracketSameLine": true
+  "bracketSameLine": true
 }

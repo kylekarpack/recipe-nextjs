@@ -13,18 +13,18 @@ describe("string tests", () => {
       expect(removeStepNumber("this is 1. step")).toBe("this is 1. step");
     });
 
-		it("removes raw step numbers", () => {
-			expect(removeStepNumber("1. step")).toBe("step");
-			expect(removeStepNumber("2. step")).toBe("step");
-			expect(removeStepNumber("999. step")).toBe("step");
-		})
+    it("removes raw step numbers", () => {
+      expect(removeStepNumber("1. step")).toBe("step");
+      expect(removeStepNumber("2. step")).toBe("step");
+      expect(removeStepNumber("999. step")).toBe("step");
+    });
 
-		it("removes html step numbers", () => {
-			expect(removeStepNumber("<p>1. step")).toBe("step");
-			expect(removeStepNumber("<p> 1. step")).toBe("step");
-			expect(removeStepNumber("<p><strong>1.</strong> step")).toBe("step");
-			expect(removeStepNumber("<p><strong> 1.</strong> step")).toBe("step");
-			expect(removeStepNumber("<p>999. step")).toBe("step");
-		});
+    it("removes html step numbers", () => {
+      expect(removeStepNumber("<p>1. step")).toBe("step");
+      expect(removeStepNumber("<p> 1. step")).toBe("step");
+      expect(removeStepNumber("<p><strong>1.</strong> step")).toBe("step");
+      expect(removeStepNumber("<p><strong> 1.</strong> step")).toBe("step");
+      expect(removeStepNumber("<p>999. step")).toBe("step");
+    });
   });
 });

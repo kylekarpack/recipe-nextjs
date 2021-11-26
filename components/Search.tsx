@@ -59,8 +59,7 @@ const Search: FunctionComponent = () => {
         left="0"
         right="0"
         paddingStart="0"
-        listStyleType="none"
-      >
+        listStyleType="none">
         {isOpen &&
           items.map((item, index) => (
             <ListItem
@@ -69,8 +68,7 @@ const Search: FunctionComponent = () => {
               cursor="pointer"
               style={highlightedIndex === index ? { backgroundColor: "#bde4ff" } : {}}
               key={`${item}${index}`}
-              {...getItemProps({ item, index })}
-            >
+              {...getItemProps({ item, index })}>
               {itemToString(item)}
             </ListItem>
           ))}

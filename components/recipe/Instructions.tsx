@@ -17,8 +17,7 @@ export const Instructions: FunctionComponent<Recipe> = (recipe) => {
                 <div
                   dangerouslySetInnerHTML={{
                     __html: removeStepNumber(el.content)
-                  }}
-                ></div>
+                  }}></div>
               </ListItem>
             );
           })}

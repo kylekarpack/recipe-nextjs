@@ -10,7 +10,7 @@
     "build": "next build",
     "start": "next start",
     "test": "jest",
-    "lint": "npm run:lint",
+    "lint": "npm run lint:check",
     "lint:check": "next lint",
     "lint:fix": "next lint --fix",
     "prettier": "npm run prettier:check",

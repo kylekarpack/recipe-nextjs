@@ -30,8 +30,7 @@ const NavLink: FunctionComponent<{ children: ReactNode; href?: string }> = ({ ch
       textDecoration: "none",
       bg: useColorModeValue("gray.200", "gray.700")
     }}
-    href={href}
-  >
+    href={href}>
     {children}
   </Link>
 );
