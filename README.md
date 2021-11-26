@@ -1,28 +1,6 @@
-# NextJS Starter GraphQL
+# Recipe Search
 
-A basic TypeScript starter for NextJS and Apollo Server/Client, with sensible defaults for linting and tests.
-
-## Getting Started
-
-If you use Vercel and GitHub, simply click below to instantly create a copy of the repository and set up a new deployment
-
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fkylekarpack%2Fnextjs-starter-graphql)
-
-## Live Demo
-https://nextjs-starter-graphql.vercel.app/
-
-## Features
-
-This starter features the following:
-
-- TypeScript
-- Apollo Server for GraphQL
-- CSS modules
-- Jest for tests
-  - Testing Library for component tests
-- Linting set up with NextJS eslint
-- Prettier for formatting
-- Github Actions integration for build and test running
+A recipe search application
 
 ## Quick Start
 
