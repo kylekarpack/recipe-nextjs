@@ -1,8 +1,8 @@
 import { Box, Button, Heading, Stack, Text, DarkMode } from "@chakra-ui/react";
 import Img from "next/image";
 import { FunctionComponent } from "react";
-import { makeNonProtocolRelative } from "utilities/functions";
-import { Recipe } from "utilities/types";
+import { makeNonProtocolRelative } from "lib/functions";
+import { Recipe } from "lib/types";
 
 export const HeroImage: FunctionComponent<Recipe> = ({ photo, title, description }) => {
   if (photo) {

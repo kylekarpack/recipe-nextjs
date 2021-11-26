@@ -1,6 +1,6 @@
 import { Box, Heading, ListItem, UnorderedList } from "@chakra-ui/react";
 import { FunctionComponent } from "react";
-import { Recipe } from "utilities/types";
+import { Recipe } from "lib/types";
 
 export const Ingredients: FunctionComponent<Recipe> = ({ recipeIngredientGroups }) => {
   if (recipeIngredientGroups) {

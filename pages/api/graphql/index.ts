@@ -1,5 +1,5 @@
 import { ApolloServer } from "apollo-server-micro";
-import { getTypeDefs } from "utilities/graphql/schemas";
+import { getTypeDefs } from "lib/graphql/schemas";
 
 const apolloServer = new ApolloServer({
   schema: getTypeDefs(),

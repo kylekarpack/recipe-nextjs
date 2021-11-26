@@ -1,8 +1,8 @@
 import { ApolloError } from "@apollo/client";
 import { MockedProvider, MockedResponse } from "@apollo/client/testing";
 import { act, render } from "@testing-library/react";
-import { GET_RANDOM_RECIPES } from "utilities/queries";
-import { RecipeResults, RecipeSearchHitItem } from "utilities/types";
+import { GET_RANDOM_RECIPES } from "lib/queries";
+import { RecipeResults, RecipeSearchHitItem } from "lib/types";
 import RecipeList from "./RecipeList";
 
 const getRecipes = (limit: number): RecipeSearchHitItem[] =>

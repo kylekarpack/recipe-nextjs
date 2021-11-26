@@ -1,6 +1,6 @@
 import { Box, Heading } from "@chakra-ui/react";
 import { FunctionComponent } from "react";
-import { Recipe } from "utilities/types";
+import { Recipe } from "lib/types";
 
 export const Overview: FunctionComponent<Recipe> = ({ overview }) => {
   if (overview) {

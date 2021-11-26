@@ -14,8 +14,8 @@ import { resetIdCounter, useCombobox } from "downshift";
 import { debounce } from "lodash";
 import Router from "next/router";
 import { FunctionComponent } from "react";
-import { SEARCH_RECIPES } from "utilities/queries";
-import { RecipeResults, RecipeSearchHitItem } from "utilities/types";
+import { SEARCH_RECIPES } from "lib/queries";
+import { RecipeResults, RecipeSearchHitItem } from "lib/types";
 
 const itemToString = (item: RecipeSearchHitItem) => item?._source?.title ?? "";
 

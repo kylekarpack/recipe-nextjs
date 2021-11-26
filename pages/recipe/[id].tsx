@@ -4,8 +4,8 @@ import Head from "next/head";
 import { useRouter } from "next/router";
 import ErrorMessage from "components/ErrorMessage";
 import { HeroImage, Ingredients, Instructions, Overview } from "components/recipe";
-import { GET_RECIPE } from "utilities/queries";
-import { RecipeResults } from "utilities/types";
+import { GET_RECIPE } from "lib/queries";
+import { RecipeResults } from "lib/types";
 
 const RecipePage = () => {
   const router = useRouter();

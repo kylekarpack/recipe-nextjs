@@ -1,5 +1,5 @@
 import { render } from "@testing-library/react";
-import { Recipe } from "utilities/types";
+import { Recipe } from "lib/types";
 import { Instructions } from "./Instructions";
 
 const recipe: Recipe = {

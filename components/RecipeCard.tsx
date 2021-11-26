@@ -2,8 +2,8 @@ import { Box } from "@chakra-ui/react";
 import Img from "next/image";
 import Link from "next/link";
 import { FunctionComponent } from "react";
-import { makeNonProtocolRelative } from "utilities/functions";
-import { Recipe } from "utilities/types";
+import { makeNonProtocolRelative } from "lib/functions";
+import { Recipe } from "lib/types";
 
 const RecipeCard: FunctionComponent<Recipe> = ({ id, photo, title, description }) => (
   <Link href={`/recipe/${id}`} passHref>
