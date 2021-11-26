@@ -26,8 +26,7 @@ describe("ingredients component", () => {
 
   it("renders ingredients", async () => {
     const { queryByTestId, queryAllByTestId } = render(<Ingredients {...recipe} />);
-    const container = queryByTestId("ingredients");
-    expect(container).toBeInTheDocument();
+    expect(queryByTestId("ingredients")).toBeInTheDocument();
     expect(queryAllByTestId("ingredientGroup")).toHaveLength(recipe.recipeIngredientGroups.length);
     expect(queryAllByTestId("ingredientGroup")).toHaveLength(
       recipe.recipeIngredientGroups.flatMap((el) => el.recipeIngredients.length).length
