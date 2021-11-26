@@ -15,27 +15,27 @@ import { FunctionComponent } from "react";
 import Router from "next/router";
 import { SEARCH_RECIPES } from "utilities/queries";
 import { RecipeResults, RecipeSearchHitItem } from "utilities/types";
+import { debounce } from "lodash";
 
 const itemToString = (item: RecipeSearchHitItem) => item?._source?.title ?? "";
 
 const Search: FunctionComponent = () => {
   const [findItems, { error, loading, data }] = useLazyQuery<RecipeResults>(SEARCH_RECIPES);
-
+  const findItemsDebounced = debounce(findItems, 250);
   const items = data?.search?.hits ?? [];
-	console.log(items, loading)
   resetIdCounter();
 
   const { isOpen, getMenuProps, highlightedIndex, getItemProps, getInputProps, getComboboxProps } = useCombobox({
     items,
     itemToString,
     onSelectedItemChange: ({ selectedItem }) => {
-      Router.push(`/recipe/${selectedItem._source.id}`)
+      Router.push(`/recipe/${selectedItem._source.id}`);
     },
     onInputValueChange: ({ inputValue }) => {
-      findItems({
+      findItemsDebounced({
         variables: {
           query: inputValue,
-          limit: 3
+          limit: 5
         }
       });
     }
@@ -52,7 +52,15 @@ const Search: FunctionComponent = () => {
         </InputRightElement>
         <Input {...getInputProps()} />
       </InputGroup>
-      <UnorderedList {...getMenuProps()} position="absolute" background="grey" left="0" right="0" paddingStart="0" listStyleType="none">
+      <UnorderedList
+        {...getMenuProps()}
+        position="absolute"
+        background="white"
+        left="0"
+        right="0"
+        paddingStart="0"
+        listStyleType="none"
+      >
         {isOpen &&
           items.map((item, index) => (
             <ListItem
