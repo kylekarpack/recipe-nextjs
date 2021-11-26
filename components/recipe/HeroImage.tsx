@@ -7,9 +7,16 @@ import { Recipe } from "utilities/types";
 export const HeroImage: FunctionComponent<Recipe> = (recipe) => {
   if (recipe?.photo) {
     return (
-      <Box position="relative" height="40vh">
+      <Box position="relative" height="40vh" data-testid="hero">
         <Box zIndex={99} position="relative" top={{ base: 6, sm: 12, md: 20 }} px="12">
-          <Heading as="h1" color="white" noOfLines={2} pb="2" fontSize={{ base: "2xl", sm: "3xl", lg: "4xl" }}>
+          <Heading
+            as="h1"
+            color="white"
+            noOfLines={2}
+            pb="2"
+            fontSize={{ base: "2xl", sm: "3xl", lg: "4xl" }}
+            data-testid="title"
+          >
             {recipe.title}
           </Heading>
           <Text
@@ -38,6 +45,7 @@ export const HeroImage: FunctionComponent<Recipe> = (recipe) => {
               objectFit="cover"
               src={makeNonProtocolRelative(recipe.photo.heroImageUrl)}
               alt={recipe.photo.alt}
+              data-testid="heroImage"
             />
           </Box>
         </Box>

@@ -9,7 +9,7 @@ describe("recipe overview component", () => {
   });
 
   it("renders an overview", () => {
-		render(<Overview overview="Test content" />);
+    render(<Overview overview="Test content" />);
     expect(screen.getByText(/test content/i)).toBeInTheDocument();
-	});
+  });
 });
