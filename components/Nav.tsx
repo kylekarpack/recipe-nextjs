@@ -54,6 +54,7 @@ const Nav: FunctionComponent = () => {
           aria-label={"Open Menu"}
           display={{ md: "none" }}
           onClick={isOpen ? onClose : onOpen}
+          data-testid="menutoggle"
         />
         <HStack spacing={8} alignItems={"center"}>
           <Link href="/">
@@ -65,7 +66,7 @@ const Nav: FunctionComponent = () => {
               )}
             </Flex>
           </Link>
-          <HStack as={"nav"} spacing={4} display={{ base: "none", md: "flex" }}>
+          <HStack as={"nav"} spacing={4} display={{ base: "none", md: "flex" }} data-testid="mainnav">
             {menuLinks.map((link) => (
               <NavLink href={link.href} key={link.href}>
                 {link.title}
@@ -74,14 +75,14 @@ const Nav: FunctionComponent = () => {
           </HStack>
         </HStack>
         <Flex alignItems={"center"}>
-					<Search />
+          <Search />
           <Button onClick={toggleColorMode}>{colorMode === "light" ? <MoonIcon /> : <SunIcon />}</Button>
         </Flex>
       </Flex>
 
       {isOpen ? (
         <Box pb={4} display={{ md: "none" }}>
-          <Stack as={"nav"} spacing={4}>
+          <Stack as={"nav"} spacing={4} data-testid="mobilenav">
             {menuLinks.map((link) => (
               <NavLink href={link.href} key={link.href}>
                 {link.title}
