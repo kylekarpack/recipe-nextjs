@@ -15,6 +15,11 @@ import Img from "next/image";
 import { FunctionComponent, ReactNode } from "react";
 import Search from "./Search";
 
+type MenuItem = {
+  title: string;
+  href: string;
+};
+
 const NavLink: FunctionComponent<{ children: ReactNode; href?: string }> = ({ children, href }) => (
   <Link
     px={2}
@@ -27,6 +32,16 @@ const NavLink: FunctionComponent<{ children: ReactNode; href?: string }> = ({ ch
     href={href}>
     {children}
   </Link>
+);
+
+const NavLinks: FunctionComponent<{ menuItems: MenuItem[] }> = ({ menuItems }) => (
+  <>
+    {menuItems.map((link) => (
+      <NavLink href={link.href} key={link.href}>
+        {link.title}
+      </NavLink>
+    ))}
+  </>
 );
 
 const Nav: FunctionComponent = () => {
@@ -60,11 +75,7 @@ const Nav: FunctionComponent = () => {
             </Flex>
           </Link>
           <HStack as="nav" spacing={4} display={{ base: "none", md: "flex" }} data-testid="mainnav">
-            {menuLinks.map((link) => (
-              <NavLink href={link.href} key={link.href}>
-                {link.title}
-              </NavLink>
-            ))}
+            <NavLinks menuItems={menuLinks} />
           </HStack>
         </HStack>
         <Flex alignItems="center">
@@ -76,11 +87,7 @@ const Nav: FunctionComponent = () => {
       {isOpen ? (
         <Box pb={4} display={{ md: "none" }}>
           <Stack as="nav" spacing={4} data-testid="mobilenav">
-            {menuLinks.map((link) => (
-              <NavLink href={link.href} key={link.href}>
-                {link.title}
-              </NavLink>
-            ))}
+            <NavLinks menuItems={menuLinks} />
           </Stack>
         </Box>
       ) : null}

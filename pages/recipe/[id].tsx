@@ -15,13 +15,11 @@ const RecipePage = () => {
   });
 
   if (loading) {
-    if (loading) {
-      return (
-        <Center h="60vh">
-          <Spinner />
-        </Center>
-      );
-    }
+    return (
+      <Center h="60vh">
+        <Spinner />
+      </Center>
+    );
   }
 
   if (error) {

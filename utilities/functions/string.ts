@@ -1,4 +1,4 @@
-const stepNumberRegex = /^(\<p\>)?\s?(\<strong\>)?\s?[0-9]+\.\s?(\<\/strong\>)?/;
+const stepNumberRegex = /^(<p>)?\s?(<strong>)?\s?\d+\.\s?(<\/strong>)?/;
 
 /**
  * Remove numeric values that might precede a step's contents
