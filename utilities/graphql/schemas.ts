@@ -1,17 +1,18 @@
 /* istanbul ignore file */
-
 import elasticsearch from "elasticsearch";
 import { GraphQLObjectType, GraphQLSchema } from "graphql";
 import { composeWithElastic } from "graphql-compose-elasticsearch";
 import recipeMapping from "../elasticsearch/recipeMapping";
 
-declare global {
-  var typeDefs: GraphQLSchema;
-}
+type Global = {
+  typeDefs: GraphQLSchema;
+};
+
+declare const global: Global;
 
 export const getTypeDefs = () => {
   if (global.typeDefs) {
-    return typeDefs;
+    return global.typeDefs;
   }
 
   const compose = composeWithElastic({
