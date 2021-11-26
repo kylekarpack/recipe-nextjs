@@ -29,6 +29,7 @@
         "custom": "ignore"
       }
     ],
+    "react/no-danger": "off",
     "react/require-default-props": "off",
     "react/self-closing-comp": [
       "error",

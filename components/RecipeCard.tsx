@@ -6,29 +6,29 @@ import { makeNonProtocolRelative } from "utilities/functions";
 import { Recipe } from "utilities/types";
 
 const RecipeCard: FunctionComponent<Recipe> = ({ id, photo, title, description }) => (
-    <Link href={`/recipe/${id}`} passHref>
-      <a href={`/recipe/${id}`}>
-        <Box borderWidth="1px" borderRadius="lg" overflow="hidden">
-          {photo && (
-            <Img
-              layout="responsive"
-              height={100}
-              width="100%"
-              src={makeNonProtocolRelative(photo?.imageUrl)}
-              alt={photo?.alt}
-            />
-          )}
+  <Link href={`/recipe/${id}`} passHref>
+    <a href={`/recipe/${id}`}>
+      <Box borderWidth="1px" borderRadius="lg" overflow="hidden">
+        {photo && (
+          <Img
+            layout="responsive"
+            height={100}
+            width="100%"
+            src={makeNonProtocolRelative(photo?.imageUrl)}
+            alt={photo?.alt}
+          />
+        )}
 
-          <Box p="6">
-            <Box mt="1" fontWeight="semibold" as="h4" lineHeight="tight" isTruncated>
-              {title}
-            </Box>
-
-            <Box as="p" color="gray.600" fontSize="sm" dangerouslySetInnerHTML={{ __html: description }} />
+        <Box p="6">
+          <Box mt="1" fontWeight="semibold" as="h4" lineHeight="tight" isTruncated>
+            {title}
           </Box>
+
+          <Box as="p" color="gray.600" fontSize="sm" dangerouslySetInnerHTML={{ __html: description }} />
         </Box>
-      </a>
-    </Link>
-  );
+      </Box>
+    </a>
+  </Link>
+);
 
 export default RecipeCard;
