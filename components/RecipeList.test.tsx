@@ -1,36 +1,30 @@
 import { ApolloError } from "@apollo/client";
 import { MockedProvider, MockedResponse } from "@apollo/client/testing";
 import { act, render } from "@testing-library/react";
-import React from "react";
 import { GET_RANDOM_RECIPES } from "utilities/queries";
 import { RecipeResults, RecipeSearchHitItem } from "utilities/types";
 import RecipeList from "./RecipeList";
 
-const getRecipes = (limit: number): RecipeSearchHitItem[] => {
-  return new Array(limit).fill({}).map((_, i) => {
-    return {
-      _source: {
-        title: `Recipe ${i}`,
-        id: String(i)
-      }
-    };
-  });
-};
+const getRecipes = (limit: number): RecipeSearchHitItem[] =>
+  new Array(limit).fill({}).map((_, i) => ({
+    _source: {
+      title: `Recipe ${i}`,
+      id: String(i)
+    }
+  }));
 
-const getMock = (limit: number = 0): MockedResponse<RecipeResults> => {
-  return {
-    request: {
-      query: GET_RANDOM_RECIPES
-    },
-    result: {
-      data: {
-        search: {
-          hits: getRecipes(limit)
-        }
+const getMock = (limit: number = 0): MockedResponse<RecipeResults> => ({
+  request: {
+    query: GET_RANDOM_RECIPES
+  },
+  result: {
+    data: {
+      search: {
+        hits: getRecipes(limit)
       }
     }
-  };
-};
+  }
+});
 
 describe("recipe list component", () => {
   it("renders empty", () => {
@@ -55,7 +49,12 @@ describe("recipe list component", () => {
       </MockedProvider>
     );
 
-    await act(() => new Promise((resolve) => setTimeout(resolve, 0)));
+    await act(
+      () =>
+        new Promise((resolve) => {
+          setTimeout(resolve, 0);
+        })
+    );
     expect(getByTestId("grid").childElementCount).toBe(limit);
   });
 
@@ -74,7 +73,12 @@ describe("recipe list component", () => {
       </MockedProvider>
     );
 
-    await act(() => new Promise((resolve) => setTimeout(resolve, 0)));
+    await act(
+      () =>
+        new Promise((resolve) => {
+          setTimeout(resolve, 0);
+        })
+    );
     expect(getByTestId("error")).toHaveTextContent(errorMessage);
   });
 });

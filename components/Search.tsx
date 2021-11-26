@@ -67,7 +67,7 @@ const Search: FunctionComponent = () => {
               paddingY="2"
               cursor="pointer"
               style={highlightedIndex === index ? { backgroundColor: "#bde4ff" } : {}}
-              key={`${item}${index}`}
+              key={`${item?._source?.id}`}
               {...getItemProps({ item, index })}>
               {itemToString(item)}
             </ListItem>

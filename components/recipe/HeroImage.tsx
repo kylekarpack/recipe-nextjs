@@ -1,11 +1,11 @@
 import { Box, Button, Heading, Stack, Text, DarkMode } from "@chakra-ui/react";
 import Img from "next/image";
-import React, { FunctionComponent } from "react";
+import { FunctionComponent } from "react";
 import { makeNonProtocolRelative } from "utilities/functions";
 import { Recipe } from "utilities/types";
 
-export const HeroImage: FunctionComponent<Recipe> = (recipe) => {
-  if (recipe?.photo) {
+export const HeroImage: FunctionComponent<Recipe> = ({ photo, title, description }) => {
+  if (photo) {
     return (
       <Box position="relative" height="40vh" data-testid="hero">
         <Box zIndex={99} position="relative" top={{ base: 6, sm: 12, md: 20 }} px="12">
@@ -16,13 +16,13 @@ export const HeroImage: FunctionComponent<Recipe> = (recipe) => {
             pb="2"
             fontSize={{ base: "2xl", sm: "3xl", lg: "4xl" }}
             data-testid="title">
-            {recipe.title}
+            {title}
           </Heading>
           <Text
             fontSize={{ base: "md", lg: "lg" }}
-            color={"gray.300"}
+            color="gray.300"
             noOfLines={2}
-            dangerouslySetInnerHTML={{ __html: recipe.description }}
+            dangerouslySetInnerHTML={{ __html: description }}
           />
           <Stack direction={{ base: "column", sm: "row" }} spacing={4} pt="4">
             <Button px="8" rounded="full" colorScheme="blue">
@@ -42,8 +42,8 @@ export const HeroImage: FunctionComponent<Recipe> = (recipe) => {
               priority
               layout="fill"
               objectFit="cover"
-              src={makeNonProtocolRelative(recipe.photo.heroImageUrl)}
-              alt={recipe.photo.alt}
+              src={makeNonProtocolRelative(photo.heroImageUrl)}
+              alt={photo.alt}
               data-testid="heroImage"
             />
           </Box>

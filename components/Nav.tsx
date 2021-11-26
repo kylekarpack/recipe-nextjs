@@ -19,7 +19,7 @@ const NavLink: FunctionComponent<{ children: ReactNode; href?: string }> = ({ ch
   <Link
     px={2}
     py={1}
-    rounded={"md"}
+    rounded="md"
     _hover={{
       textDecoration: "none",
       bg: useColorModeValue("gray.200", "gray.700")
@@ -40,18 +40,18 @@ const Nav: FunctionComponent = () => {
 
   return (
     <Box bg={useColorModeValue("gray.100", "gray.900")} px={4} position="sticky" top="0" zIndex="999" boxShadow="sm">
-      <Flex h={14} alignItems={"center"} justifyContent={"space-between"}>
+      <Flex h={14} alignItems="center" justifyContent="space-between">
         <IconButton
-          size={"md"}
+          size="md"
           icon={isOpen ? <CloseIcon /> : <HamburgerIcon />}
-          aria-label={"Open Menu"}
+          aria-label="Open Menu"
           display={{ md: "none" }}
           onClick={isOpen ? onClose : onOpen}
           data-testid="menutoggle"
         />
-        <HStack spacing={8} alignItems={"center"}>
+        <HStack spacing={8} alignItems="center">
           <Link href="/">
-            <Flex alignItems={"center"}>
+            <Flex alignItems="center">
               {colorMode === "dark" ? (
                 <Img src="/logo-white.svg" height={40} width={200} priority alt="Recipe tools logo" />
               ) : (
@@ -59,7 +59,7 @@ const Nav: FunctionComponent = () => {
               )}
             </Flex>
           </Link>
-          <HStack as={"nav"} spacing={4} display={{ base: "none", md: "flex" }} data-testid="mainnav">
+          <HStack as="nav" spacing={4} display={{ base: "none", md: "flex" }} data-testid="mainnav">
             {menuLinks.map((link) => (
               <NavLink href={link.href} key={link.href}>
                 {link.title}
@@ -67,7 +67,7 @@ const Nav: FunctionComponent = () => {
             ))}
           </HStack>
         </HStack>
-        <Flex alignItems={"center"}>
+        <Flex alignItems="center">
           <Search />
           <Button onClick={toggleColorMode}>{colorMode === "light" ? <MoonIcon /> : <SunIcon />}</Button>
         </Flex>
@@ -75,7 +75,7 @@ const Nav: FunctionComponent = () => {
 
       {isOpen ? (
         <Box pb={4} display={{ md: "none" }}>
-          <Stack as={"nav"} spacing={4} data-testid="mobilenav">
+          <Stack as="nav" spacing={4} data-testid="mobilenav">
             {menuLinks.map((link) => (
               <NavLink href={link.href} key={link.href}>
                 {link.title}

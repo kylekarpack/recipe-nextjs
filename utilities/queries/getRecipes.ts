@@ -56,6 +56,7 @@ export const GET_RECIPE = gql`
           recipeIngredientGroups {
             name
             recipeIngredients {
+              id
               ingredient {
                 name
                 pluralName

@@ -1,6 +1,6 @@
 import { QueryResult } from "@apollo/client";
 import { Center, SimpleGrid, Spinner } from "@chakra-ui/react";
-import React, { FunctionComponent } from "react";
+import { FunctionComponent } from "react";
 import { RecipeResults } from "utilities/types";
 import ErrorMessage from "./ErrorMessage";
 import RecipeCard from "./RecipeCard";

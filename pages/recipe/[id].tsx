@@ -4,7 +4,6 @@ import ErrorMessage from "components/ErrorMessage";
 import { HeroImage, Ingredients, Instructions, Overview } from "components/recipe";
 import Head from "next/head";
 import { useRouter } from "next/router";
-import React from "react";
 import { GET_RECIPE } from "utilities/queries";
 import { RecipeResults } from "utilities/types";
 

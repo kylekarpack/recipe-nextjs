@@ -1,24 +1,24 @@
 import { Box, Heading, ListItem, UnorderedList } from "@chakra-ui/react";
-import React, { FunctionComponent } from "react";
+import { FunctionComponent } from "react";
 import { Recipe } from "utilities/types";
 
-export const Ingredients: FunctionComponent<Recipe> = (recipe) => {
-  if (recipe.recipeIngredientGroups) {
+export const Ingredients: FunctionComponent<Recipe> = ({ recipeIngredientGroups }) => {
+  if (recipeIngredientGroups) {
     return (
       <Box data-testid="ingredients">
         <Heading as="h2" pb="4">
           Ingredients
         </Heading>
-        {recipe.recipeIngredientGroups.map((group, i) => (
-          <Box key={i}>
+        {recipeIngredientGroups.map((group) => (
+          <Box key={group.name}>
             {group.name && (
               <Box>
                 <strong>{group.name}</strong>
               </Box>
             )}
             <UnorderedList py="2" data-testid="ingredientGroup">
-              {group.recipeIngredients.map((ingredient, i) => (
-                <ListItem key={i} pb="2" lineHeight="1.2" data-testid="ingredient">
+              {group.recipeIngredients.map((ingredient) => (
+                <ListItem key={ingredient.id} pb="2" lineHeight="1.2" data-testid="ingredient">
                   {ingredient.pre}
                   {ingredient.quantity} <span>{ingredient.measurement}</span>{" "}
                   {ingredient.quantity === "1" ? ingredient.ingredient.name : ingredient.ingredient.pluralName}

@@ -1,12 +1,20 @@
 {
   "$schema": "https://json.schemastore.org/eslintrc.json",
-  "extends": ["next/core-web-vitals", "prettier", "airbnb"],
+  "plugins": ["jest"],
+  "extends": ["airbnb", "next/core-web-vitals", "prettier"],
+  "env": {
+    "jest/globals": true
+  },
   "rules": {
-    "no-var": "error",
-    "no-unused-vars": "error",
-    "complexity": ["warn", 20],
-    "curly": ["error", "multi-line"],
-    "no-loop-func": "error",
-    "no-bitwise": "error"
+    "quotes": ["error", "double"],
+    "import/extensions": "off",
+    "import/no-extraneous-dependencies": ["error", {"devDependencies": ["**/*.test.ts", "**/*.test.tsx"]}],
+    "react/function-component-definition": "off",
+    "no-underscore-dangle": "off",
+    "react/require-default-props": "off",
+    "react/self-closing-comp": ["error", { "html": false}],
+    "react/jsx-filename-extension": ["error", { "extensions": [".tsx"] }],
+    "react/jsx-props-no-spreading": ["error", { "custom": "ignore" }],
+    "import/prefer-default-export": "off"
   }
 }
