@@ -5,7 +5,7 @@ import { Recipe } from "utilities/types";
 export const Ingredients: FunctionComponent<Recipe> = (recipe) => {
   if (recipe.recipeIngredientGroups) {
     return (
-      <>
+      <Box data-testid="ingredients">
         <Heading as="h2" pb="4">
           Ingredients
         </Heading>
@@ -16,9 +16,9 @@ export const Ingredients: FunctionComponent<Recipe> = (recipe) => {
                 <strong>{group.name}</strong>
               </Box>
             )}
-            <UnorderedList py="2">
+            <UnorderedList py="2" data-testid="ingredientGroup">
               {group.recipeIngredients.map((ingredient, i) => (
-                <ListItem key={i} pb="2" lineHeight="1.2">
+                <ListItem key={i} pb="2" lineHeight="1.2" data-testid="ingredient">
 									{ingredient.pre}
                   {ingredient.quantity} <span>{ingredient.measurement}</span>{" "}
                   {ingredient.quantity === "1" ? ingredient.ingredient.name : ingredient.ingredient.pluralName}
@@ -28,7 +28,7 @@ export const Ingredients: FunctionComponent<Recipe> = (recipe) => {
             </UnorderedList>
           </Box>
         ))}
-      </>
+      </Box>
     );
   }
   return null;

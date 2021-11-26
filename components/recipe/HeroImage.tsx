@@ -15,8 +15,7 @@ export const HeroImage: FunctionComponent<Recipe> = (recipe) => {
             noOfLines={2}
             pb="2"
             fontSize={{ base: "2xl", sm: "3xl", lg: "4xl" }}
-            data-testid="title"
-          >
+            data-testid="title">
             {recipe.title}
           </Heading>
           <Text
