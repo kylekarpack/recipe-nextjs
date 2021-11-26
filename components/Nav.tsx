@@ -1,17 +1,11 @@
-import { MoonIcon, SunIcon, CloseIcon, HamburgerIcon } from "@chakra-ui/icons";
+import { CloseIcon, HamburgerIcon, MoonIcon, SunIcon } from "@chakra-ui/icons";
 import {
-  Avatar,
   Box,
   Button,
-  HStack,
   Flex,
-  Link,
-  Menu,
+  HStack,
   IconButton,
-  MenuButton,
-  MenuDivider,
-  MenuItem,
-  MenuList,
+  Link,
   Stack,
   useColorMode,
   useColorModeValue,

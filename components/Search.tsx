@@ -20,7 +20,7 @@ import { debounce } from "lodash";
 const itemToString = (item: RecipeSearchHitItem) => item?._source?.title ?? "";
 
 const Search: FunctionComponent = () => {
-  const [findItems, { error, loading, data }] = useLazyQuery<RecipeResults>(SEARCH_RECIPES);
+  const [findItems, { loading, data }] = useLazyQuery<RecipeResults>(SEARCH_RECIPES);
   const findItemsDebounced = debounce(findItems, 250);
   const items = data?.search?.hits ?? [];
   resetIdCounter();
