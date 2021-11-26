@@ -6,15 +6,35 @@
     "jest/globals": true
   },
   "rules": {
-    "quotes": ["error", "double"],
     "import/extensions": "off",
-    "import/no-extraneous-dependencies": ["error", {"devDependencies": ["**/*.test.ts", "**/*.test.tsx"]}],
-    "react/function-component-definition": "off",
+    "import/no-extraneous-dependencies": [
+      "error",
+      {
+        "devDependencies": ["**/*.test.ts", "**/*.test.tsx"]
+      }
+    ],
+    "import/prefer-default-export": "off",
     "no-underscore-dangle": "off",
+    "quotes": ["error", "double"],
+    "react/function-component-definition": "off",
+    "react/jsx-filename-extension": [
+      "error",
+      {
+        "extensions": [".tsx"]
+      }
+    ],
+    "react/jsx-props-no-spreading": [
+      "error",
+      {
+        "custom": "ignore"
+      }
+    ],
     "react/require-default-props": "off",
-    "react/self-closing-comp": ["error", { "html": false}],
-    "react/jsx-filename-extension": ["error", { "extensions": [".tsx"] }],
-    "react/jsx-props-no-spreading": ["error", { "custom": "ignore" }],
-    "import/prefer-default-export": "off"
+    "react/self-closing-comp": [
+      "error",
+      {
+        "html": false
+      }
+    ]
   }
 }
