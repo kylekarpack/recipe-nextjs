@@ -12,9 +12,14 @@ export const Instructions: FunctionComponent<Recipe> = ({ instructions }) => {
         <Heading as="h2" pb="4">
           Instructions
         </Heading>
-        <OrderedList data-testid="instructionsList">
+        <OrderedList start={currentStep + 1} data-testid="instructionsList">
           {instructions.map((el, i) => (
-            <ListItem key={el.content} pb="2" opacity={currentStep > i ? 0.5 : 1} data-testid="instruction">
+            <ListItem
+              key={el.content}
+              pb="2"
+              display={currentStep > i ? "none" : "list-item"}
+              opacity={currentStep === i ? 1 : 0.5}
+              data-testid="instruction">
               <div
                 dangerouslySetInnerHTML={{
                   __html: removeStepNumber(el.content)
