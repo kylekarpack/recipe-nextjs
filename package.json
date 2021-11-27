@@ -15,7 +15,8 @@
     "lint:fix": "next lint --fix",
     "prettier": "npm run prettier:check",
     "prettier:check": "prettier --check --ignore-path .gitignore .",
-    "prettier:fix": "prettier --write --ignore-path .gitignore ."
+    "prettier:fix": "prettier --write --ignore-path .gitignore .",
+    "cloc": "npx cloc --vcs=git --not-match-f=package\\-lock\\.json"
   },
   "dependencies": {
     "@apollo/client": "^3.3.20",
