@@ -5,7 +5,7 @@ import { useCookingStateContext } from "lib/hooks/useCookingState";
 import { Recipe } from "lib/types";
 
 export const CookingState: FunctionComponent<Recipe> = ({ instructions }) => {
-  const { setIsCooking, currentStep, setCurrentStep } = useCookingStateContext();
+  const { reset, currentStep, setCurrentStep } = useCookingStateContext();
 
   return (
     <Box
@@ -31,7 +31,7 @@ export const CookingState: FunctionComponent<Recipe> = ({ instructions }) => {
           </Button>
         </Box>
         <Box flex="1" textAlign="right">
-          <Button px="8" rounded="full" colorScheme="blue" onClick={() => setIsCooking(false)}>
+          <Button px="8" rounded="full" colorScheme="blue" onClick={() => reset()}>
             Done Cooking
           </Button>
         </Box>

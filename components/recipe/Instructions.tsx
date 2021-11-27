@@ -5,7 +5,7 @@ import { useCookingStateContext } from "lib/hooks/useCookingState";
 import { Recipe } from "lib/types";
 
 export const Instructions: FunctionComponent<Recipe> = ({ instructions }) => {
-  const { currentStep } = useCookingStateContext();
+  const { currentStep, isCooking } = useCookingStateContext();
   if (instructions) {
     return (
       <Box data-testid="instructions">
@@ -18,7 +18,7 @@ export const Instructions: FunctionComponent<Recipe> = ({ instructions }) => {
               key={el.content}
               pb="2"
               display={currentStep > i ? "none" : "list-item"}
-              opacity={currentStep === i ? 1 : 0.5}
+              opacity={!isCooking || currentStep === i ? 1 : 0.5}
               data-testid="instruction">
               <div
                 dangerouslySetInnerHTML={{
