@@ -8,6 +8,7 @@ const recipe: Recipe = {
       name: "First test group",
       recipeIngredients: [
         {
+          id: 1,
           ingredient: {
             name: "test ingredient"
           }
