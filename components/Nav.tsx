@@ -54,7 +54,14 @@ const Nav: FunctionComponent = () => {
   const { colorMode, toggleColorMode } = useColorMode();
 
   return (
-    <Box bg={useColorModeValue("gray.100", "gray.900")} px={4} position="sticky" top="0" zIndex="999" boxShadow="sm">
+    <Box
+      role="menu"
+      bg={useColorModeValue("gray.100", "gray.900")}
+      px={4}
+      position="sticky"
+      top="0"
+      zIndex="999"
+      boxShadow="sm">
       <Flex h={14} alignItems="center" justifyContent="space-between">
         <IconButton
           size="md"
