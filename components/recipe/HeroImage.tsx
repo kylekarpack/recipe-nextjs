@@ -2,7 +2,7 @@ import { Box, Button, DarkMode, Heading, Stack, Text } from "@chakra-ui/react";
 import Img from "next/image";
 import { FunctionComponent } from "react";
 import { makeNonProtocolRelative } from "lib/functions";
-import { useCookingStateContext } from "lib/hooks/useCookingStateContext";
+import { useCookingStateContext } from "lib/hooks";
 import { Recipe } from "lib/types";
 
 export const HeroImage: FunctionComponent<Recipe> = ({ photo, title, description }) => {

@@ -4,7 +4,7 @@ import Head from "next/head";
 import { useRouter } from "next/router";
 import ErrorMessage from "components/ErrorMessage";
 import { CookingState, HeroImage, Ingredients, Instructions, Overview } from "components/recipe";
-import { useCookingStateContext } from "lib/hooks/useCookingStateContext";
+import { useCookingStateContext } from "lib/hooks";
 import { GET_RECIPE } from "lib/queries";
 import { RecipeResults } from "lib/types";
 

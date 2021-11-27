@@ -1,5 +1,5 @@
 import { FunctionComponent } from "react";
-import { useCookingStateContext } from "lib/hooks/useCookingStateContext";
+import { useCookingStateContext } from "lib/hooks";
 import Nav from "./Nav";
 
 const Main: FunctionComponent = ({ children }) => {

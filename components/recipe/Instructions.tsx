@@ -1,7 +1,7 @@
 import { Box, Heading, ListItem, OrderedList } from "@chakra-ui/react";
 import { FunctionComponent } from "react";
 import { removeStepNumber } from "lib/functions";
-import { useCookingStateContext } from "lib/hooks/useCookingStateContext";
+import { useCookingStateContext } from "lib/hooks";
 import { Recipe } from "lib/types";
 
 export const Instructions: FunctionComponent<Recipe> = ({ instructions }) => {
