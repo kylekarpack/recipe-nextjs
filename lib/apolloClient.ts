@@ -1,9 +1,9 @@
 import { ApolloClient, HttpLink, InMemoryCache } from "@apollo/client";
 import { useMemo } from "react";
 
-let apolloClient: ApolloClient<any>;
+let apolloClient: ApolloClient<object>;
 
-function createApolloClient(): ApolloClient<any> {
+function createApolloClient(): ApolloClient<object> {
   return new ApolloClient({
     ssrMode: typeof window === "undefined", // set to true for SSR
     link: new HttpLink({
@@ -22,7 +22,7 @@ function createApolloClient(): ApolloClient<any> {
 /**
  * Initialize the Apollo client
  */
-export function initializeApollo(initialState: any = null): ApolloClient<any> {
+export function initializeApollo(initialState: object = null): ApolloClient<object> {
   const _apolloClient = apolloClient ?? createApolloClient();
 
   if (initialState) {
@@ -49,6 +49,6 @@ export function initializeApollo(initialState: any = null): ApolloClient<any> {
 /**
  * Use a memoized Apollo state
  */
-export function useApollo(initialState: any): ApolloClient<any> {
+export function useApollo(initialState: object): ApolloClient<object> {
   return useMemo(() => initializeApollo(initialState), [initialState]);
 }

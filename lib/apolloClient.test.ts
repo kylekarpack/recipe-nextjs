@@ -1,7 +1,7 @@
 import { initializeApollo, useApollo } from "./apolloClient";
 
 jest.mock("react", () => ({
-  useMemo: (): any => null
+  useMemo: (): unknown => null
 }));
 
 describe("apollo client", () => {
@@ -16,7 +16,7 @@ describe("apollo client", () => {
   });
 
   it("useApollo hook loads with no initial state", () => {
-    const hook = (useApollo as any)();
+    const hook = useApollo(null);
     expect(hook).toBeDefined();
   });
 
