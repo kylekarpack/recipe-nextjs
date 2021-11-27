@@ -1,4 +1,4 @@
-import { Box, Heading, ListItem, UnorderedList, Checkbox } from "@chakra-ui/react";
+import { Box, Checkbox, Heading, ListItem, UnorderedList } from "@chakra-ui/react";
 import { FunctionComponent, useState } from "react";
 import { useCookingStateContext } from "lib/hooks";
 import { Recipe, RecipeIngredientGroupsRecipeIngredients } from "lib/types";

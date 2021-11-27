@@ -1,4 +1,4 @@
-import { useApollo, initializeApollo } from "./apolloClient";
+import { initializeApollo, useApollo } from "./apolloClient";
 
 jest.mock("react", () => ({
   useMemo: (): any => null

@@ -1,4 +1,4 @@
-import { createContext, FunctionComponent, useContext, useMemo, useState } from "react";
+import { FunctionComponent, createContext, useContext, useMemo, useState } from "react";
 import { CookingState, CookingStateValues } from "lib/types";
 
 const defaultState: CookingStateValues = {

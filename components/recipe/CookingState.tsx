@@ -1,5 +1,5 @@
-import { ArrowForwardIcon, ArrowBackIcon } from "@chakra-ui/icons";
-import { Box, Button, useColorModeValue, Flex } from "@chakra-ui/react";
+import { ArrowBackIcon, ArrowForwardIcon } from "@chakra-ui/icons";
+import { Box, Button, Flex, useColorModeValue } from "@chakra-ui/react";
 import { FunctionComponent } from "react";
 import { useCookingStateContext } from "lib/hooks";
 import { Recipe } from "lib/types";

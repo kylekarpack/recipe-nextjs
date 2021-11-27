@@ -1,4 +1,4 @@
-import { Alert, AlertIcon, AlertDescription } from "@chakra-ui/react";
+import { Alert, AlertDescription, AlertIcon } from "@chakra-ui/react";
 import { FunctionComponent } from "react";
 
 const ErrorMessage: FunctionComponent = ({ children }) => (
