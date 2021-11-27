@@ -1,9 +1,9 @@
 import { Box, Button, useColorModeValue } from "@chakra-ui/react";
 import { FunctionComponent } from "react";
-import { useIsCookingContext } from "lib/hooks/useIsCooking";
+import { useCookingStateContext } from "@/lib/hooks/useCookingState";
 
 export const CookingState: FunctionComponent = () => {
-  const { setIsCooking } = useIsCookingContext();
+  const { setIsCooking } = useCookingStateContext();
 
   return (
     <Box

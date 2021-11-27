@@ -4,13 +4,13 @@ import Head from "next/head";
 import { useRouter } from "next/router";
 import ErrorMessage from "components/ErrorMessage";
 import { CookingState, HeroImage, Ingredients, Instructions, Overview } from "components/recipe";
-import { useIsCookingContext } from "lib/hooks/useIsCooking";
+import { useCookingStateContext } from "lib/hooks/useCookingState";
 import { GET_RECIPE } from "lib/queries";
 import { RecipeResults } from "lib/types";
 
 const RecipePage = () => {
   const router = useRouter();
-  const { isCooking } = useIsCookingContext();
+  const { isCooking } = useCookingStateContext();
 
   const { data, error, loading } = useQuery<RecipeResults>(GET_RECIPE, {
     variables: { id: String(router.query.id) }

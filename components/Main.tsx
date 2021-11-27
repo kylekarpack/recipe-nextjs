@@ -1,14 +1,14 @@
 import { FunctionComponent } from "react";
-import { useIsCookingContext } from "lib/hooks/useIsCooking";
 import Nav from "./Nav";
+import { useCookingStateContext } from "@/lib/hooks/useCookingState";
 
-const Main: FunctionComponent = ({ children}) => {
-  const { isCooking } = useIsCookingContext();
+const Main: FunctionComponent = ({ children }) => {
+  const { isCooking } = useCookingStateContext();
   return (
     <>
       {!isCooking && <Nav />}
       {children}
-		</>
+    </>
   );
 };
 
