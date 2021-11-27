@@ -34,14 +34,15 @@ const RecipePage = () => {
     <>
       <Head>
         <title>{recipe.title}</title>
+        {isCooking && <style>{"body { overscroll-behavior-y: none }"}</style>}
       </Head>
-      <Grid alignItems="self-end" templateRows={isCooking ? "repeat(2, auto)" : ""} h={isCooking ? "100vh" : ""}>
+      <Grid alignItems="stretch" templateRows={isCooking ? "repeat(2, auto)" : null} h={isCooking ? "100vh" : null}>
         {!isCooking && (
           <GridItem>
             <HeroImage {...recipe} />
           </GridItem>
         )}
-        <GridItem>
+        <GridItem maxH={isCooking ? "100vh" : null} overflowY={isCooking ? "auto" : null}>
           <Container maxW="container.xl" py={isCooking ? 0 : 12} px="12" overflowY="auto">
             {!isCooking && <Overview {...recipe} />}
             <Grid templateColumns="repeat(5, 1fr)" py="6" gap={12}>
@@ -55,7 +56,7 @@ const RecipePage = () => {
           </Container>
         </GridItem>
         {isCooking && (
-          <GridItem>
+          <GridItem alignSelf="end">
             <CookingState {...recipe} />
           </GridItem>
         )}
