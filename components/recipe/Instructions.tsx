@@ -4,6 +4,9 @@ import { removeStepNumber } from "lib/functions";
 import { useCookingStateContext } from "lib/hooks";
 import { Recipe } from "lib/types";
 
+/**
+ * Display the step-by-step instructions for a recipe
+ */
 export const Instructions: FunctionComponent<Recipe> = ({ instructions }) => {
   const { currentStep, isCooking } = useCookingStateContext();
   if (instructions) {

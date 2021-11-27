@@ -5,6 +5,9 @@ import { makeNonProtocolRelative } from "lib/functions";
 import { useCookingStateContext } from "lib/hooks";
 import { Recipe } from "lib/types";
 
+/**
+ * Hero image for a recipe page
+ */
 export const HeroImage: FunctionComponent<Recipe> = ({ photo, title, description }) => {
   const { isCooking, setIsCooking } = useCookingStateContext();
   const setCookingContext = () => {

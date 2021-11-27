@@ -10,6 +10,9 @@ type Global = {
 
 declare const global: Global;
 
+/**
+ * Get the GraphQL schema for the application
+ */
 export const getTypeDefs = () => {
   if (global.typeDefs) {
     return global.typeDefs;

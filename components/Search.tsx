@@ -19,6 +19,9 @@ import { RecipeResults, RecipeSearchHitItem } from "lib/types";
 
 const itemToString = (item: RecipeSearchHitItem) => item?._source?.title ?? "";
 
+/**
+ * Autocomplete for recipes
+ */
 const Search: FunctionComponent = () => {
   const [findItems, { loading, data }] = useLazyQuery<RecipeResults>(SEARCH_RECIPES);
   const findItemsDebounced = debounce(findItems, 250);

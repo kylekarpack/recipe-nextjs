@@ -8,6 +8,9 @@ import { RecipeResults } from "lib/types";
 
 const seed = new Date().getTime();
 
+/**
+ * The home page of the application
+ */
 const HomePage: FunctionComponent = () => {
   const query = useQuery<RecipeResults>(GET_RANDOM_RECIPES, {
     variables: { seed, limit: 12 }

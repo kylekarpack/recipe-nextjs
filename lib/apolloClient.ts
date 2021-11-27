@@ -19,6 +19,9 @@ function createApolloClient(): ApolloClient<any> {
   });
 }
 
+/**
+ * Initialize the Apollo client
+ */
 export function initializeApollo(initialState: any = null): ApolloClient<any> {
   const _apolloClient = apolloClient ?? createApolloClient();
 
@@ -43,6 +46,9 @@ export function initializeApollo(initialState: any = null): ApolloClient<any> {
   return _apolloClient;
 }
 
+/**
+ * Use a memoized Apollo state
+ */
 export function useApollo(initialState: any): ApolloClient<any> {
   return useMemo(() => initializeApollo(initialState), [initialState]);
 }

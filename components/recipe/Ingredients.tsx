@@ -28,6 +28,9 @@ const Ingredient: FunctionComponent<{ ingredient: RecipeIngredientGroupsRecipeIn
   );
 };
 
+/**
+ * Display the list of ingredients for a recipe
+ */
 export const Ingredients: FunctionComponent<Recipe> = ({ recipeIngredientGroups }) => {
   if (recipeIngredientGroups) {
     return (

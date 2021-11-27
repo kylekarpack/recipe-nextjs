@@ -4,6 +4,9 @@ import { FunctionComponent } from "react";
 import { useCookingStateContext } from "lib/hooks";
 import { Recipe } from "lib/types";
 
+/**
+ * View and modify the cooking state of this recipe
+ */
 export const CookingState: FunctionComponent<Recipe> = ({ instructions }) => {
   const { reset, currentStep, setCurrentStep } = useCookingStateContext();
 

@@ -44,6 +44,9 @@ const NavLinks: FunctionComponent<{ menuItems: MenuItem[] }> = ({ menuItems }) =
   </>
 );
 
+/**
+ * Main navigation for the application
+ */
 const Nav: FunctionComponent = () => {
   const menuLinks = [
     { title: "Home", href: "/" },

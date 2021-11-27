@@ -8,6 +8,9 @@ import { useCookingStateContext } from "lib/hooks";
 import { GET_RECIPE } from "lib/queries";
 import { RecipeResults } from "lib/types";
 
+/**
+ * View a single recipe
+ */
 const RecipePage = () => {
   const router = useRouter();
   const { isCooking } = useCookingStateContext();

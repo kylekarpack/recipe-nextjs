@@ -2,6 +2,9 @@ import { Box, Heading } from "@chakra-ui/react";
 import { FunctionComponent } from "react";
 import { Recipe } from "lib/types";
 
+/**
+ * Display the overview for a recipe
+ */
 export const Overview: FunctionComponent<Recipe> = ({ overview }) => {
   if (overview) {
     return (

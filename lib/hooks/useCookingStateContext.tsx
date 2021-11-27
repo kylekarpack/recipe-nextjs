@@ -8,7 +8,9 @@ const defaultState: CookingStateValues = {
 
 const CookingStateContext = createContext<CookingState>(null);
 
-/** Retrieve getters and setters for cooking state context */
+/**
+ * Retrieve getters and setters for cooking state context
+ */
 export const useCookingStateContext = (): CookingState => {
   const context = useContext(CookingStateContext);
   if (!context) {
@@ -17,7 +19,9 @@ export const useCookingStateContext = (): CookingState => {
   return context;
 };
 
-/** Provide the cooking state context */
+/**
+ * Provide the cooking state context
+ */
 export const CookingStateContextProvider: FunctionComponent = ({ children }) => {
   const [state, setState] = useState(defaultState);
   const cookingState = useMemo<CookingState>(

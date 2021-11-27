@@ -1,6 +1,6 @@
 {
   "$schema": "https://json.schemastore.org/eslintrc.json",
-  "plugins": ["jest", "@typescript-eslint"],
+  "plugins": ["jest", "@typescript-eslint", "jsdoc"],
   "extends": ["airbnb", "next/core-web-vitals", "prettier", "plugin:import/recommended"],
   "parser": "@typescript-eslint/parser",
   "env": {
@@ -51,6 +51,29 @@
       }
     ],
     "no-unused-vars": "off",
-    "@typescript-eslint/no-unused-vars": "error"
+    "@typescript-eslint/no-unused-vars": "error",
+    "jsdoc/require-jsdoc": [
+      "warn",
+      {
+        "contexts": ["TSInterfaceDeclaration", "TSMethodSignature", "TSPropertySignature"],
+        "publicOnly": { "ancestorsOnly": false, "esm": true },
+        "require": {
+          "ClassDeclaration": true,
+          "ClassExpression": true,
+          "MethodDefinition": true,
+          "ArrowFunctionExpression": true,
+          "FunctionDeclaration": true,
+          "FunctionExpression": true
+        },
+        "enableFixer": true
+      }
+    ],
+    "jsdoc/check-line-alignment": "warn",
+    "jsdoc/multiline-blocks": [
+      "warn",
+      {
+        "noSingleLineBlocks": true
+      }
+    ]
   }
 }

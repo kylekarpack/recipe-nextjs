@@ -6,6 +6,9 @@ import Main from "components/Main";
 import { useApollo } from "lib/apolloClient";
 import { CookingStateContextProvider } from "lib/hooks";
 
+/**
+ * Default template for all pages in the application
+ */
 function App({ Component, pageProps }: AppProps) {
   const apolloClient = useApollo(pageProps.initialApolloState);
 

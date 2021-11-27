@@ -5,6 +5,9 @@ import { FunctionComponent } from "react";
 import { makeNonProtocolRelative } from "lib/functions";
 import { Recipe } from "lib/types";
 
+/**
+ * Display a recipe card with a photo, title, and description
+ */
 const RecipeCard: FunctionComponent<Recipe> = ({ id, photo, title, description }) => (
   <Link href={`/recipe/${id}`} passHref>
     <a href={`/recipe/${id}`}>

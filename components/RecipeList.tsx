@@ -5,6 +5,9 @@ import { RecipeResults } from "lib/types";
 import ErrorMessage from "./ErrorMessage";
 import RecipeCard from "./RecipeCard";
 
+/**
+ * Display a list of recipe cards
+ */
 const RecipeList: FunctionComponent<Partial<QueryResult<RecipeResults>>> = (props) => {
   const { loading, error, data } = props;
 
