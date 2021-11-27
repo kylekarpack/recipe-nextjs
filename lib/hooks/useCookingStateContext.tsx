@@ -1,14 +1,14 @@
 import { createContext, FunctionComponent, useContext, useMemo, useState } from "react";
-import { CookingState } from "lib/types";
+import { CookingState, CookingStateValues } from "lib/types";
 
-const defaultState: Pick<CookingState, "isCooking" | "currentStep"> = {
+const defaultState: CookingStateValues = {
   isCooking: false,
   currentStep: 0
 };
 
 const CookingStateContext = createContext<CookingState>(null);
 
-export const useCookingStateContext = () => {
+export const useCookingStateContext = (): CookingState => {
   const context = useContext(CookingStateContext);
   if (!context) {
     throw new Error("useCookingStateContext must be used within a CookingStateContext provider");

@@ -35,19 +35,31 @@ const RecipePage = () => {
       <Head>
         <title>{recipe.title}</title>
       </Head>
-      {!isCooking && <HeroImage {...recipe} />}
-      <Container maxW="container.xl" py={isCooking ? 0 : 12} px="12">
-        {!isCooking && <Overview {...recipe} />}
-        <Grid templateColumns="repeat(5, 1fr)" py="6" gap={12}>
-          <GridItem colSpan={3}>
-            <Instructions {...recipe} />
+      <Grid alignItems="self-end" templateRows={isCooking ? "repeat(2, auto)" : ""} h={isCooking ? "100vh" : ""}>
+        {!isCooking && (
+          <GridItem>
+            <HeroImage {...recipe} />
           </GridItem>
-          <GridItem colSpan={2}>
-            <Ingredients {...recipe} />
+        )}
+        <GridItem>
+          <Container maxW="container.xl" py={isCooking ? 0 : 12} px="12" overflowY="auto">
+            {!isCooking && <Overview {...recipe} />}
+            <Grid templateColumns="repeat(5, 1fr)" py="6" gap={12}>
+              <GridItem colSpan={3}>
+                <Instructions {...recipe} />
+              </GridItem>
+              <GridItem colSpan={2}>
+                <Ingredients {...recipe} />
+              </GridItem>
+            </Grid>
+          </Container>
+        </GridItem>
+        {isCooking && (
+          <GridItem>
+            <CookingState {...recipe} />
           </GridItem>
-        </Grid>
-      </Container>
-      {isCooking && <CookingState {...recipe} />}
+        )}
+      </Grid>
     </>
   );
 };

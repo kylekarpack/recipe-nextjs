@@ -8,15 +8,7 @@ export const CookingState: FunctionComponent<Recipe> = ({ instructions }) => {
   const { reset, currentStep, setCurrentStep } = useCookingStateContext();
 
   return (
-    <Box
-      position="sticky"
-      bottom="0"
-      textAlign="center"
-      py="2"
-      px="4"
-      bg={useColorModeValue("gray.100", "gray.900")}
-      zIndex="999"
-      boxShadow="sm">
+    <Box textAlign="center" py="2" px="4" bg={useColorModeValue("gray.100", "gray.900")} zIndex="999" boxShadow="sm">
       <Flex justifyContent="space-between">
         <Box flex="1">&nbsp;</Box>
         <Box>
