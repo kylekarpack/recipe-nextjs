@@ -4,7 +4,7 @@ import { AppProps } from "next/app";
 import Head from "next/head";
 import Main from "components/Main";
 import { useApollo } from "lib/apolloClient";
-import CookingStateContextProvider from "lib/hooks/useCookingState";
+import CookingStateContextProvider from "lib/hooks/useCookingStateContext";
 
 function App({ Component, pageProps }: AppProps) {
   const apolloClient = useApollo(pageProps.initialApolloState);
