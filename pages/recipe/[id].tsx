@@ -47,7 +47,7 @@ const RecipePage = () => {
           </GridItem>
         </Grid>
       </Container>
-      {isCooking && <CookingState />}
+      {isCooking && <CookingState {...recipe} />}
     </>
   );
 };
