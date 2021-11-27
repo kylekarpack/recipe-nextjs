@@ -1,10 +1,16 @@
-import { Box, Button, Heading, Stack, Text, DarkMode } from "@chakra-ui/react";
+import { Box, Button, DarkMode, Heading, Stack, Text } from "@chakra-ui/react";
 import Img from "next/image";
 import { FunctionComponent } from "react";
 import { makeNonProtocolRelative } from "lib/functions";
+import { useIsCookingContext } from "lib/hooks/useIsCooking";
 import { Recipe } from "lib/types";
 
 export const HeroImage: FunctionComponent<Recipe> = ({ photo, title, description }) => {
+  const { isCooking, setIsCooking } = useIsCookingContext();
+  const setCookingContext = () => {
+    setIsCooking(!isCooking);
+  };
+
   if (photo) {
     return (
       <Box position="relative" height="40vh" data-testid="hero">
@@ -29,7 +35,7 @@ export const HeroImage: FunctionComponent<Recipe> = ({ photo, title, description
               Add to Meal Plan
             </Button>
             <DarkMode>
-              <Button px="8" borderColor="grey.50" variant="outline" rounded="full">
+              <Button px="8" borderColor="grey.50" variant="outline" rounded="full" onClick={setCookingContext}>
                 Start Cooking
               </Button>
             </DarkMode>

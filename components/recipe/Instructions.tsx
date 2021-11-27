@@ -1,9 +1,12 @@
-import { Box, Heading, ListItem, OrderedList } from "@chakra-ui/react";
+import { Box, Heading, ListItem, OrderedList, Button } from "@chakra-ui/react";
 import { FunctionComponent } from "react";
 import { removeStepNumber } from "lib/functions";
+import { useIsCookingContext } from "lib/hooks/useIsCooking";
 import { Recipe } from "lib/types";
 
 export const Instructions: FunctionComponent<Recipe> = ({ instructions }) => {
+  const { isCooking, setIsCooking } = useIsCookingContext();
+
   if (instructions) {
     return (
       <Box data-testid="instructions">
@@ -20,6 +23,8 @@ export const Instructions: FunctionComponent<Recipe> = ({ instructions }) => {
             </ListItem>
           ))}
         </OrderedList>
+
+        {isCooking && <Button onClick={() => setIsCooking(false)}>test</Button>}
       </Box>
     );
   }

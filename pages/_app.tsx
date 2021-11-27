@@ -2,22 +2,12 @@ import { ApolloProvider } from "@apollo/client";
 import { ChakraProvider } from "@chakra-ui/react";
 import { AppProps } from "next/app";
 import Head from "next/head";
-import { createContext, useMemo, useState } from "react";
-import Nav from "components/Nav";
 import { useApollo } from "lib/apolloClient";
-
-type CookingContext = {
-  isCooking: boolean;
-  setIsCooking: (isCooking: boolean) => void;
-};
-
-export const IsCookingContext = createContext<CookingContext>(null);
+import CookingContextProvider from "lib/hooks/useIsCooking";
+import Main from "@/components/Main";
 
 function App({ Component, pageProps }: AppProps) {
   const apolloClient = useApollo(pageProps.initialApolloState);
-
-  const [isCooking, setIsCooking] = useState(false);
-  const cooking = useMemo(() => ({ isCooking, setIsCooking }), [isCooking]);
 
   return (
     <>
@@ -32,15 +22,15 @@ function App({ Component, pageProps }: AppProps) {
         <link href="/icons/180.png" rel="icon" type="image/png" sizes="180x180" />
         <link rel="apple-touch-icon" href="/icons/180.png" />
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-
         <meta name="theme-color" content="#8bd7f8" />
       </Head>
       <ApolloProvider client={apolloClient}>
         <ChakraProvider>
-          <IsCookingContext.Provider value={cooking}>
-            <Nav />
-            <Component {...pageProps} />
-          </IsCookingContext.Provider>
+          <CookingContextProvider>
+            <Main>
+              <Component {...pageProps} />
+            </Main>
+          </CookingContextProvider>
         </ChakraProvider>
       </ApolloProvider>
     </>
