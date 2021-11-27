@@ -1,7 +1,8 @@
 {
   "$schema": "https://json.schemastore.org/eslintrc.json",
-  "plugins": ["jest"],
+  "plugins": ["jest", "@typescript-eslint"],
   "extends": ["airbnb", "next/core-web-vitals", "prettier", "plugin:import/recommended"],
+  "parser": "@typescript-eslint/parser",
   "env": {
     "jest/globals": true
   },
@@ -11,6 +12,16 @@
       "error",
       {
         "devDependencies": ["**/*.test.ts", "**/*.test.tsx"]
+      }
+    ],
+    "import/order": [
+      "error",
+      {
+        "alphabetize": {
+          "order": "asc",
+          "caseInsensitive": true
+        },
+        "groups": ["builtin", "external", "internal", "parent", "sibling", "index", "object", "type"]
       }
     ],
     "import/prefer-default-export": "off",
@@ -37,12 +48,7 @@
         "html": false
       }
     ],
-    "import/order": ["error", {
-      "alphabetize": {
-        "order": "asc",
-        "caseInsensitive": true
-      },
-      "groups": ["builtin", "external", "internal", "parent", "sibling", "index", "object", "type"]
-    }]
+    "no-unused-vars": "off",
+    "@typescript-eslint/no-unused-vars": "error"
   }
 }

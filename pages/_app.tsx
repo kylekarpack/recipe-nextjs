@@ -2,11 +2,22 @@ import { ApolloProvider } from "@apollo/client";
 import { ChakraProvider } from "@chakra-ui/react";
 import { AppProps } from "next/app";
 import Head from "next/head";
+import { createContext, useMemo, useState } from "react";
 import Nav from "components/Nav";
 import { useApollo } from "lib/apolloClient";
 
+type CookingContext = {
+  isCooking: boolean;
+  setIsCooking: (isCooking: boolean) => void;
+};
+
+export const IsCookingContext = createContext<CookingContext>(null);
+
 function App({ Component, pageProps }: AppProps) {
   const apolloClient = useApollo(pageProps.initialApolloState);
+
+  const [isCooking, setIsCooking] = useState(false);
+  const cooking = useMemo(() => ({ isCooking, setIsCooking }), [isCooking]);
 
   return (
     <>
@@ -26,8 +37,10 @@ function App({ Component, pageProps }: AppProps) {
       </Head>
       <ApolloProvider client={apolloClient}>
         <ChakraProvider>
-          <Nav />
-          <Component {...pageProps} />
+          <IsCookingContext.Provider value={cooking}>
+            <Nav />
+            <Component {...pageProps} />
+          </IsCookingContext.Provider>
         </ChakraProvider>
       </ApolloProvider>
     </>
