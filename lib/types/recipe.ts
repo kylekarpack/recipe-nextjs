@@ -1,6 +1,7 @@
 /* eslint-disable jsdoc/require-jsdoc */
 /* eslint-disable no-use-before-define */
 /* eslint-disable camelcase */
+/* eslint-disable @typescript-eslint/array-type */
 export type Maybe<T> = T | null;
 export type Exact<T extends { [key: string]: unknown }> = {
   [K in keyof T]: T[K];
@@ -16,8 +17,8 @@ export type Scalars = {
   Boolean: boolean;
   Int: number;
   Float: number;
-  Date: any;
-  JSON: any;
+  Date: Date;
+  JSON: unknown;
 };
 
 export type RecipeResults = {

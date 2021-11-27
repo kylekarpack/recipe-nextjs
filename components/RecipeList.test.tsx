@@ -13,7 +13,7 @@ const getRecipes = (limit: number): RecipeSearchHitItem[] =>
     }
   }));
 
-const getMock = (limit: number = 0): MockedResponse<RecipeResults> => ({
+const getMock = (limit = 0): MockedResponse<RecipeResults> => ({
   request: {
     query: GET_RANDOM_RECIPES
   },

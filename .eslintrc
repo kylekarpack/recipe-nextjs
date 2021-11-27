@@ -1,7 +1,13 @@
 {
   "$schema": "https://json.schemastore.org/eslintrc.json",
   "plugins": ["jest", "@typescript-eslint", "jsdoc"],
-  "extends": ["airbnb", "next/core-web-vitals", "prettier", "plugin:import/recommended"],
+  "extends": [
+    "airbnb",
+    "next/core-web-vitals",
+    "prettier",
+    "plugin:import/recommended",
+    "plugin:@typescript-eslint/recommended"
+  ],
   "parser": "@typescript-eslint/parser",
   "env": {
     "jest/globals": true
@@ -52,6 +58,16 @@
     ],
     "no-unused-vars": "off",
     "@typescript-eslint/no-unused-vars": "error",
+    "@typescript-eslint/array-type": [
+      "error",
+      {
+        "default": "array"
+      }
+    ],
+    "@typescript-eslint/prefer-for-of": "error",
+    "@typescript-eslint/prefer-includes": "error",
+    "@typescript-eslint/prefer-optional-chain": "error",
+    "@typescript-eslint/prefer-nullish-coalescing": "error",
     "jsdoc/require-jsdoc": [
       "warn",
       {
