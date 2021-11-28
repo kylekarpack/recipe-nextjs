@@ -1,5 +1,5 @@
 import { Box, Checkbox, Heading, ListItem, UnorderedList } from "@chakra-ui/react";
-import { FunctionComponent, useState } from "react";
+import { FunctionComponent, ReactElement, useState } from "react";
 import { useCookingStateContext } from "lib/hooks";
 import { Recipe, RecipeIngredientGroupsRecipeIngredients } from "lib/types";
 
@@ -13,14 +13,14 @@ const Ingredient: FunctionComponent<{ ingredient: RecipeIngredientGroupsRecipeIn
           {children}
         </Checkbox>
       )
-    : // eslint-disable-next-line react/jsx-no-useless-fragment
-      ({ children }) => <>{children}</>;
+    : ({ children }) => children as ReactElement;
 
   return (
     <ListItem pb="2" lineHeight="1.2" data-testid="ingredient" listStyleType={isCooking ? "none" : null}>
       <IngredientContainer>
         {ingredient.pre}
-        {ingredient.quantity} <span>{ingredient.measurement}</span>{" "}
+        {ingredient.pre ? " " : ""}
+        {ingredient.quantity} {ingredient.measurement}{" "}
         {ingredient.quantity === "1" ? ingredient.ingredient.name : ingredient.ingredient.pluralName}
         {ingredient.post?.startsWith(",") ? "" : " "}
         <span>{ingredient.post}</span>
