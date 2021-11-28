@@ -8,7 +8,8 @@ import {
   InputLeftElement,
   InputRightElement,
   ListItem,
-  UnorderedList
+  UnorderedList,
+  useColorModeValue
 } from "@chakra-ui/react";
 import { resetIdCounter, useCombobox } from "downshift";
 import { debounce } from "lodash";
@@ -28,24 +29,30 @@ const Search: FunctionComponent = () => {
   const items = data?.search?.hits ?? [];
   resetIdCounter();
 
-  const { isOpen, getMenuProps, highlightedIndex, getItemProps, getInputProps, getComboboxProps } = useCombobox({
-    items,
-    itemToString,
-    onSelectedItemChange: ({ selectedItem }) => {
-      Router.push(`/recipe/${selectedItem._source.id}`);
-    },
-    onInputValueChange: ({ inputValue }) => {
-      findItemsDebounced({
-        variables: {
-          query: inputValue,
-          limit: 5
+  const { isOpen, getMenuProps, highlightedIndex, getItemProps, getInputProps, getComboboxProps, selectItem } =
+    useCombobox({
+      items,
+      itemToString,
+      onSelectedItemChange: ({ selectedItem }) => {
+        if (selectedItem) {
+          Router.push(`/recipe/${selectedItem._source.id}`);
+          selectItem(null);
         }
-      });
-    }
-  });
+      },
+      onInputValueChange: ({ inputValue }) => {
+        findItemsDebounced({
+          variables: {
+            query: inputValue,
+            limit: 5
+          }
+        });
+      }
+    });
+
+  const highlightedItemBackground = useColorModeValue("gray.200", "gray.700");
 
   return (
-    <Box position="relative">
+    <Box position="relative" mr="2">
       <InputGroup {...getComboboxProps()}>
         <InputLeftElement pointerEvents="none">
           <SearchIcon color="gray.300" />
@@ -58,7 +65,7 @@ const Search: FunctionComponent = () => {
       <UnorderedList
         {...getMenuProps()}
         position="absolute"
-        background="white"
+        background={useColorModeValue("white", "gray.900")}
         left="0"
         right="0"
         paddingStart="0"
@@ -69,7 +76,7 @@ const Search: FunctionComponent = () => {
               paddingX="4"
               paddingY="2"
               cursor="pointer"
-              style={highlightedIndex === index ? { backgroundColor: "#bde4ff" } : {}}
+              background={highlightedIndex === index ? highlightedItemBackground : ""}
               key={`${item?._source?.id}`}
               {...getItemProps({ item, index })}>
               {itemToString(item)}

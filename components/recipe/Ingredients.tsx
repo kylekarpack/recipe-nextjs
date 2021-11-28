@@ -22,7 +22,8 @@ const Ingredient: FunctionComponent<{ ingredient: RecipeIngredientGroupsRecipeIn
         {ingredient.pre}
         {ingredient.quantity} <span>{ingredient.measurement}</span>{" "}
         {ingredient.quantity === "1" ? ingredient.ingredient.name : ingredient.ingredient.pluralName}
-        <span> {ingredient.post}</span>
+        {ingredient.post?.startsWith(",") ? "" : " "}
+        <span>{ingredient.post}</span>
       </IngredientContainer>
     </ListItem>
   );
