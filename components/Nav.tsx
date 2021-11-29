@@ -11,8 +11,8 @@ import {
   useColorModeValue,
   useDisclosure
 } from "@chakra-ui/react";
-import Img from "next/image";
 import { FunctionComponent, ReactNode } from "react";
+import { Logo } from "./Logo";
 import Search from "./Search";
 
 type MenuItem = {
@@ -77,11 +77,7 @@ const Nav: FunctionComponent = () => {
         <HStack spacing={8} alignItems="center">
           <Link href="/">
             <Flex alignItems="center">
-              {colorMode === "dark" ? (
-                <Img src="/logo-white.svg" height={40} width={200} priority alt="Recipe tools logo" />
-              ) : (
-                <Img src="/logo.svg" height={40} width={200} priority alt="Recipe tools logo" />
-              )}
+              <Logo />
             </Flex>
           </Link>
           <HStack as="nav" spacing={4} display={{ base: "none", md: "flex" }} data-testid="mainnav">
