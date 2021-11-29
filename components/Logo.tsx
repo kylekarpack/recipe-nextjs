@@ -8,11 +8,8 @@ import { FunctionComponent } from "react";
 export const Logo: FunctionComponent = () => {
   const { colorMode } = useColorMode();
   return (
-    <Box w={{ base: 36, lg: 48 }}>
-      <svg
-        style={{ display: "block", maxWidth: "100%", maxHeight: "100%" }}
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 900 200">
+    <Box w={{ base: 40, lg: 48 }}>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 200">
         <style
           dangerouslySetInnerHTML={{
             __html: `path { fill: ${colorMode === "dark" ? "#FFF" : "#444"} }`

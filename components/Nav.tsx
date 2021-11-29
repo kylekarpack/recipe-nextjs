@@ -85,7 +85,9 @@ const Nav: FunctionComponent = () => {
           </HStack>
         </HStack>
         <Flex alignItems="center">
-          <Search />
+          <Box display={{ base: "none", md: "block" }}>
+            <Search />
+          </Box>
           <Button onClick={toggleColorMode}>{colorMode === "light" ? <MoonIcon /> : <SunIcon />}</Button>
         </Flex>
       </Flex>
