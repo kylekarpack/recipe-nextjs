@@ -21,7 +21,9 @@ const Ingredient: FunctionComponent<{ ingredient: RecipeIngredientGroupsRecipeIn
         {ingredient.pre}
         {ingredient.pre ? " " : ""}
         {ingredient.quantity} {ingredient.measurement}{" "}
-        {ingredient.quantity === "1" ? ingredient.ingredient.name : ingredient.ingredient.pluralName}
+        {ingredient.quantity === "1" || ingredient.quantity?.includes("/")
+          ? ingredient.ingredient.name
+          : ingredient.ingredient.pluralName}
         {ingredient.post?.startsWith(",") ? "" : " "}
         <span>{ingredient.post}</span>
       </IngredientContainer>
