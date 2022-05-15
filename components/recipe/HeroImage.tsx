@@ -1,6 +1,7 @@
 import { Box, Button, DarkMode, Heading, Stack, Text } from "@chakra-ui/react";
 import Img from "next/image";
 import { FunctionComponent } from "react";
+import { addToMealPlan } from "lib/data/db";
 import { makeNonProtocolRelative } from "lib/functions";
 import { useCookingStateContext } from "lib/hooks";
 import { Recipe } from "lib/types";
@@ -8,7 +9,8 @@ import { Recipe } from "lib/types";
 /**
  * Hero image for a recipe page
  */
-export const HeroImage: FunctionComponent<Recipe> = ({ photo, title, description }) => {
+export const HeroImage: FunctionComponent<Recipe> = (recipe) => {
+  const { photo, title, description } = recipe;
   const { isCooking, setIsCooking } = useCookingStateContext();
   const setCookingContext = () => {
     setIsCooking(!isCooking);
@@ -34,7 +36,7 @@ export const HeroImage: FunctionComponent<Recipe> = ({ photo, title, description
             dangerouslySetInnerHTML={{ __html: description }}
           />
           <Stack direction={{ base: "column", sm: "row" }} spacing={4} pt="4">
-            <Button px="8" rounded="full" colorScheme="blue">
+            <Button px="8" rounded="full" colorScheme="blue" onClick={() => addToMealPlan(recipe)}>
               Add to Meal Plan
             </Button>
             <DarkMode>
