@@ -1,7 +1,7 @@
 module.exports = {
   setupFilesAfterEnv: ["<rootDir>/jest.setup.js"],
   collectCoverageFrom: ["**/*.{ts,tsx}", "!**/*.d.ts", "!**/node_modules/**", "!**/pages/**"],
-  modulePaths: ["<rootDir>", "utilities"],
+  modulePaths: ["<rootDir>", "lib"],
   moduleNameMapper: {
     /* Handle CSS imports (with CSS modules)
     https://jestjs.io/docs/webpack#mocking-css-modules */
@@ -19,9 +19,20 @@ module.exports = {
   testPathIgnorePatterns: ["<rootDir>/node_modules/", "<rootDir>/.next/", "<rootDir>/pages"],
   testEnvironment: "jsdom",
   transform: {
-    /* Use babel-jest to transpile tests with the next/babel preset
-    https://jestjs.io/docs/configuration#transform-objectstring-pathtotransformer--pathtotransformer-object */
-    "^.+\\.(js|jsx|ts|tsx)$": ["babel-jest", { presets: ["next/babel"] }]
+    "^.+\\.(t|j)sx?$": [
+      "@swc/jest",
+      {
+        sourceMaps: true,
+        jsc: {
+          target: "es2021",
+          transform: {
+            react: {
+              runtime: "automatic"
+            }
+          }
+        }
+      }
+    ]
   },
   transformIgnorePatterns: ["/node_modules/", "^.+\\.module\\.(css|sass|scss)$"]
 };
