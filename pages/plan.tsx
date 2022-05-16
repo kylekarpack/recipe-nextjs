@@ -1,7 +1,9 @@
-import { Container, Grid, GridItem, Heading } from "@chakra-ui/react";
+import { DeleteIcon } from "@chakra-ui/icons";
+import { Button, Container, Grid, GridItem, Heading, UnorderedList } from "@chakra-ui/react";
 import Head from "next/head";
 import { FunctionComponent, useEffect, useState } from "react";
-import { getIngredients, getMealPlan } from "lib/data/db";
+import { Ingredient } from "components/recipe";
+import { getIngredients, getMealPlan, removeFromMealPlan } from "lib/data/db";
 import { Recipe, RecipeIngredientGroupsRecipeIngredients } from "lib/types";
 
 /**
@@ -10,10 +12,18 @@ import { Recipe, RecipeIngredientGroupsRecipeIngredients } from "lib/types";
 const Plan: FunctionComponent = () => {
   const [recipes, setRecipes] = useState<Recipe[]>([]);
   const [ingredients, setIngredients] = useState<RecipeIngredientGroupsRecipeIngredients[]>([]);
+
   useEffect(() => {
     setRecipes(getMealPlan());
     setIngredients(getIngredients());
   }, []);
+
+  const removeRecipe = (recipe: Recipe): void => {
+    const newRecipes = removeFromMealPlan(recipe);
+    setRecipes(newRecipes);
+    setIngredients(getIngredients());
+  };
+
   return (
     <>
       <Head>
@@ -26,17 +36,22 @@ const Plan: FunctionComponent = () => {
 
             <ol>
               {recipes.map((r) => (
-                <li key={r.id}>{r.title}</li>
+                <li key={r.id}>
+                  {r.title}
+                  <Button ml={2} size="xs" onClick={() => removeRecipe(r)}>
+                    <DeleteIcon />
+                  </Button>
+                </li>
               ))}
             </ol>
           </GridItem>
           <GridItem colSpan={3}>
             <Heading as="h3">Ingredients List</Heading>
-            <ul>
+            <UnorderedList>
               {ingredients.map((el) => (
-                <li key={el.id}>{el.ingredient?.name}</li>
+                <Ingredient key={el.id} ingredient={el} />
               ))}
-            </ul>
+            </UnorderedList>
           </GridItem>
         </Grid>
       </Container>

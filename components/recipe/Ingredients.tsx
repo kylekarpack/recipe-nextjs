@@ -3,7 +3,14 @@ import { FunctionComponent, ReactElement, useState } from "react";
 import { useCookingStateContext } from "lib/hooks";
 import { Recipe, RecipeIngredientGroupsRecipeIngredients } from "lib/types";
 
-const Ingredient: FunctionComponent<{ ingredient: RecipeIngredientGroupsRecipeIngredients }> = ({ ingredient }) => {
+/**
+ * Render an ingredient
+ * @param param0 R
+ * @returns
+ */
+export const Ingredient: FunctionComponent<{ ingredient: RecipeIngredientGroupsRecipeIngredients }> = ({
+  ingredient
+}) => {
   const { isCooking } = useCookingStateContext();
   const [isUsed, setIsUsed] = useState(false);
 
@@ -21,7 +28,8 @@ const Ingredient: FunctionComponent<{ ingredient: RecipeIngredientGroupsRecipeIn
         {ingredient.pre}
         {ingredient.pre ? " " : ""}
         {ingredient.quantity} {ingredient.measurement}{" "}
-        {ingredient.quantity === "1" || ingredient.quantity?.includes("/")
+        {ingredient.quantity === "1" ||
+        (typeof ingredient.quantity?.includes === "function" && ingredient.quantity?.includes("/"))
           ? ingredient.ingredient.name
           : ingredient.ingredient.pluralName}
         {ingredient.post?.startsWith(",") ? "" : " "}

@@ -60,6 +60,7 @@ export const GET_RECIPE = gql`
               ingredient {
                 name
                 pluralName
+                kind
               }
               measurement
               quantity
